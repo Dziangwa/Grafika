@@ -72,7 +72,7 @@ void Wheel::rysujKolo()
 
 void Wheel::ustawPozycje(float x, float y, float z)
 {
-	//teqweqwe
+	//teqweqwe123w
 	pos[0] = x;
 	pos[1] = y;
 	pos[2] = z;

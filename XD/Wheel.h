@@ -12,7 +12,7 @@ public:
 	~Wheel();
 
 	GLfloat pos[3];
-
+	//s
 	void rysujKolo();
 	void ustawPozycje(float x, float y, float z);
 };

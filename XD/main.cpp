@@ -714,7 +714,7 @@ void lazik() {
 	Wheel wheel1(50,0,0);
 	Wheel wheel2(50,-50,0);
 	Wheel wheel3(0,-50,0);
-
+	//test
 	wheel.rysujKolo();
 	wheel1.rysujKolo();
 	wheel2.rysujKolo();

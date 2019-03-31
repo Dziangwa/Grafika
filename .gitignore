@@ -5,3 +5,5 @@ XD/Debug/
 XD/Debug/Wheel.obj
 Debug
 .vs
+*.vcxproj
+*.vcxproj.*
