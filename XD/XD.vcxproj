@@ -115,11 +115,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Lazik.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Wheel.cpp" />
+    <ClCompile Include="Prostopadloscian.cpp" />
+    <ClCompile Include="Walec.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Wheel.h" />
+    <ClInclude Include="Lazik.h" />
+    <ClInclude Include="Prostopadloscian.h" />
+    <ClInclude Include="Walec.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

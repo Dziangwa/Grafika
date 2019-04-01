@@ -18,12 +18,24 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Wheel.cpp">
+    <ClCompile Include="Prostopadloscian.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Walec.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Lazik.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Wheel.h">
+    <ClInclude Include="Prostopadloscian.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Walec.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Lazik.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

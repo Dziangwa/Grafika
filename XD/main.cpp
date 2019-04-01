@@ -66,7 +66,9 @@
 #include <gl\glu.h>             // GLU library
 #include <math.h>				// Define for sqrt
 #include <stdio.h>          // About box resource identifiers.
-#include "Wheel.h"
+#include "Walec.h"
+#include "Prostopadloscian.h"
+#include "Lazik.h"
 
 #define glRGB(x, y, z)	glColor3ub((GLubyte)x, (GLubyte)y, (GLubyte)z)
 #define BITMAP_ID 0x4D42		// identyfikator formatu BMP
@@ -709,52 +711,6 @@ void mur(void)
 
 }
 
-void lazik() {
-	Wheel wheel(0,0,0);
-	Wheel wheel1(50,0,0);
-	Wheel wheel2(50,-50,0);
-	Wheel wheel3(0,-50,0);
-	//test
-	wheel.rysujKolo();
-	wheel1.rysujKolo();
-	wheel2.rysujKolo();
-	wheel3.rysujKolo();
-}
-
-void walec(double r, double h)
-{
-	double x, y, alpha, PI = 3.14;
-	glBegin(GL_TRIANGLE_FAN);
-	glColor3d(0.8, 0.0, 0);
-	glVertex3d(0, 0, 0);
-	for (alpha = 0; alpha <= 2 * PI; alpha += PI / 8.0)
-	{
-		x = r * sin(alpha);
-		y = r * cos(alpha);
-		glVertex3d(x, y, 0);
-	}
-	glEnd();
-
-	glBegin(GL_QUAD_STRIP);
-	for (alpha = 0.0; alpha <= 2 * PI; alpha += PI / 8.0)
-	{
-		x = r * sin(alpha);
-		y = r * cos(alpha);
-		glVertex3d(x, y, 0);
-		glVertex3d(x, y, h);
-	}
-	glEnd();
-
-	glBegin(GL_TRIANGLE_FAN);
-	glVertex3d(0, 0, h);
-	for (alpha = 0; alpha >= -2 * PI; alpha -= PI / 8.0)
-	{
-		x = r * sin(alpha);
-		y = r * cos(alpha);
-		glVertex3d(x, y, h);
-	}
-	glEnd();
-}
 void ramie(double r1, double r2, double h, double d)
 {
 	double PI = 3.14, alpha, x, y;
@@ -822,6 +778,47 @@ void ramie(double r1, double r2, double h, double d)
 	}
 	glEnd();
 }
+
+void lazik() {
+	Lazik laz(0, 0, 0);
+	laz.rysujLazik();
+}
+
+void walec(double r, double h)
+{
+	double x, y, alpha, PI = 3.14;
+	glBegin(GL_TRIANGLE_FAN);
+	glColor3d(0.8, 0.0, 0);
+	glVertex3d(0, 0, 0);
+	for (alpha = 0; alpha <= 2 * PI; alpha += PI / 8.0)
+	{
+		x = r * sin(alpha);
+		y = r * cos(alpha);
+		glVertex3d(x, y, 0);
+	}
+	glEnd();
+
+	glBegin(GL_QUAD_STRIP);
+	for (alpha = 0.0; alpha <= 2 * PI; alpha += PI / 8.0)
+	{
+		x = r * sin(alpha);
+		y = r * cos(alpha);
+		glVertex3d(x, y, 0);
+		glVertex3d(x, y, h);
+	}
+	glEnd();
+
+	glBegin(GL_TRIANGLE_FAN);
+	glVertex3d(0, 0, h);
+	for (alpha = 0; alpha >= -2 * PI; alpha -= PI / 8.0)
+	{
+		x = r * sin(alpha);
+		y = r * cos(alpha);
+		glVertex3d(x, y, h);
+	}
+	glEnd();
+}
+
 // Called to draw scene
 void RenderScene(void)
 {
