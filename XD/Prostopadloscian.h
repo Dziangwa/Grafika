@@ -9,12 +9,13 @@ class Prostopadloscian
 {
 public:
 	Prostopadloscian(double x, double y, double z,
-		double dlugosc, double szerokosc, double wysokosc);
+		double dlugosc, double szerokosc, double wysokosc, double ang);
 	~Prostopadloscian();
 
 	double wymiary[3];
 	double pos[3];
 
+	double angle;
 	const int szer = 1;
 	const int wys = 2;
 	const int dlug = 0;
