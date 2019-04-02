@@ -2,8 +2,9 @@
 
 
 
-Prostopadloscian::Prostopadloscian(double x, double y, double z, double dlugosc, double szerokosc, double wysokosc, double ang)
+Prostopadloscian::Prostopadloscian(double x, double y, double z, double dlugosc, double szerokosc, double wysokosc, double ang, int kolor)
 {
+	color = kolor;
 	angle = ang;
 	pos[0] = x;
 	pos[1] = y;
@@ -20,6 +21,8 @@ Prostopadloscian::~Prostopadloscian()
 void Prostopadloscian::rysujPro() {
 	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 	{
+		glColor3fv(Jabko[color]);
+
 		GLfloat sa[3] = {pos[0], pos[1], pos[2]};
 		double posTemp[3]= { pos[0] - wymiary[2] * cos(3.14 / 2 - angle), pos[1], pos[2] + wymiary[2] * sin(3.14 / 2 - angle) };
 		GLfloat sb[3] = { posTemp[0], posTemp[1], posTemp[2] };
@@ -85,7 +88,7 @@ void Prostopadloscian::rysujPro() {
 		glVertex3fv(ssi);
 		glEnd();
 
-		glColor3f(0.1, 0.1, 0.1);
+		//glColor3f(0.1, 0.1, 0.1);
 		glBegin(GL_TRIANGLE_STRIP);
 		glVertex3fv(sb);
 		glVertex3fv(ssb);
@@ -136,7 +139,7 @@ void Prostopadloscian::rysujPro() {
 		GLfloat ssssi[3] = { posssTemp[0], posssTemp[1] + wymiary[1], posssTemp[2] };
 		GLfloat ssssj[3] = { posssTemp[0] - wymiary[2] * cos(3.14 / 2 - angle), posssTemp[1] + wymiary[1], posssTemp[2] + wymiary[2] * sin(3.14 / 2 - angle) };
 
-		glColor3f(0.15, 0.15, 0.15);
+		//glColor3f(0.15, 0.15, 0.15);
 		glBegin(GL_TRIANGLE_STRIP);
 		glVertex3fv(sssb);
 		glVertex3fv(sssa);
@@ -150,7 +153,7 @@ void Prostopadloscian::rysujPro() {
 		glVertex3fv(sssi);
 		glEnd();
 		
-		glColor3f(1, 1, 0);
+		//glColor3f(1, 1, 0);
 		glBegin(GL_TRIANGLE_STRIP);
 		glVertex3fv(ssssb);
 		glVertex3fv(ssssa);

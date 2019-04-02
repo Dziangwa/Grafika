@@ -27,7 +27,7 @@ public:
 	Walec kolo_5a;
 	Walec kolo_6a;
 	Walec os1;
-	Walec os2;
+	//Walec os2;
 	Prostopadloscian p1;
 	Prostopadloscian p2;
 	Prostopadloscian p3;
