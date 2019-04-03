@@ -25,7 +25,7 @@ Lazik::Lazik(double x, double y, double z)
 	os1(pos[0] - 20, pos[1], pos[2] + 20*sqrt(3)/3 - 20, 35, 2.5),
 	//os2(pos[0] + 22, pos[1], pos[2], 35, 2.5),
 	kadlub1(pos[0] - 30, pos[1] - 17.5, pos[2] + 20 * sqrt(3) / 3 - 20, 70, 35, 13, 0,0),
-	kadlub2(pos[0], pos[1] - 17.5, pos[2] + 20 * sqrt(3) / 3 - 7, 40, 35, 20, 0,0),
+	kadlub2(pos[0], pos[1] - 17.5, pos[2] + 20 * sqrt(3) / 3 - 7, 40, 35, 20, 0,5),
 	antena(pos[0] + 30, pos[1] + 10, pos[2] + 20 * sqrt(3) / 3 + 13, 30, 2.5, 2.5, 3.14 / 2,2),
 	ramie(pos[0] - 15, pos[1] - 2.5, pos[2] + 3, 40, 5, 5, 3.14*3/4,4),
 	ramie1(pos[0] - 15 - 20*sqrt(2), pos[1] - 2.5, pos[2] + 3 + 20*sqrt(2), 50, 5, 5, 3.14 + 3.14/6,4)
