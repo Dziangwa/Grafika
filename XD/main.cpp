@@ -3,7 +3,6 @@
 #define  _CRT_SECURE_NO_WARNINGS
 
 
-
 // £adowanie bibliotek:
 
 #ifdef _MSC_VER                         // Check if MS Visual C compiler
@@ -35,6 +34,7 @@
 #define ID_BUTTON40003                  40003
 #define ID_LIGHTING_SUNLIGHT            40004
 #define ID_LIGHTING_AMBIENTLIGHT        40005
+#define STB_IMAGE_IMPLEMENTATION
 
 // Next default values for new objects
 // 
@@ -69,6 +69,12 @@
 #include "Walec.h"
 #include "Prostopadloscian.h"
 #include "Lazik.h"
+#include "grid.h"
+#include "stb_image.h"
+#include "Podloze.h"
+#include "Camera.h"
+#include "OBJ_Loader.h"
+#include "object.h"
 
 #define glRGB(x, y, z)	glColor3ub((GLubyte)x, (GLubyte)y, (GLubyte)z)
 #define BITMAP_ID 0x4D42		// identyfikator formatu BMP
@@ -84,6 +90,15 @@ static HINSTANCE hInstance;
 // Rotation amounts
 static GLfloat xRot = 0.0f;
 static GLfloat yRot = 0.0f;
+static GLfloat zRot = 0.0f;
+static GLdouble xV = 0.0f;
+static GLdouble yV = 0.0f;
+static GLdouble zV = 0.0f;
+static GLdouble startX = -90;
+static GLdouble startZ = 0;
+static GLdouble doZ = 0;
+static GLdouble chX = 0;
+static GLdouble chY = 0;
 
 
 static GLsizei lastHeight;
@@ -93,6 +108,40 @@ static GLsizei lastWidth;
 BITMAPINFOHEADER	bitmapInfoHeader;	// nag³ówek obrazu
 unsigned char*		bitmapData;			// dane tekstury
 unsigned int		texture[2];			// obiekt tekstury
+
+unsigned int textures[3];
+GLfloat rot[] = { 0,1,0,0 };
+
+GLfloat pos1[3] = { 0,0,-5 };
+
+GLfloat color1[3] = { 0.9,0.49,0.07 };
+auto terrain = new object{ &textures[0], "landscape.obj", color1, pos1, rot, 20 };
+auto camera = new Camera{};
+
+
+unsigned int LoadTexture(const char* file, GLenum textureSlot)
+{
+	GLuint texHandle;
+	// Copy file to OpenGL
+	glGenTextures(textureSlot, &texHandle);
+	glBindTexture(GL_TEXTURE_2D, texHandle);
+	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+
+	int width, height, nrChannels;
+	const auto data = stbi_load(file, &width, &height, &nrChannels, 0);
+	if (data)
+	{
+		//glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
+		gluBuild2DMipmaps(GL_TEXTURE_2D, nrChannels, width, height, GL_RGBA, GL_UNSIGNED_BYTE, data);
+	}
+	else
+	{
+		//error
+	}
+	stbi_image_free(data);
+	return texHandle;
+}
 
 
 // Declaration for Window procedure
@@ -165,7 +214,7 @@ void calcNormal(float v[3][3], float out[3])
 // Change viewing volume and viewport.  Called when window is resized
 void ChangeSize(GLsizei w, GLsizei h)
 {
-	GLfloat nRange = 100.0f;
+	GLfloat nRange = 7000.0f;
 	GLfloat fAspect;
 	// Prevent a divide by zero
 	if (h == 0)
@@ -183,15 +232,15 @@ void ChangeSize(GLsizei w, GLsizei h)
 	glLoadIdentity();
 
 	// Establish clipping volume (left, right, bottom, top, near, far)
-	if (w <= h)
+	/*if (w <= h)
 		glOrtho(-nRange, nRange, -nRange * h / w, nRange*h / w, -nRange, nRange);
 	else
 		glOrtho(-nRange * w / h, nRange*w / h, -nRange, nRange, -nRange, nRange);
+*/
+// Establish perspective: 
 
-	// Establish perspective: 
-	/*
-	gluPerspective(60.0f,fAspect,1.0,400);
-	*/
+	gluPerspective(90.0f, fAspect, 10.0, nRange);
+
 
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
@@ -327,7 +376,56 @@ void kula(void)
 	glDisable(GL_TEXTURE_2D);
 }
 
+GLuint loadBMP_custom(const char* path) {
+	unsigned char header[54]; // Each BMP file begins by a 54-bytes header
+	unsigned int dataPos;     // Position in the file where the actual data begins
+	unsigned int width, height;
+	unsigned int imageSize;   // = width*height*3
+	// Actual RGB data
+	unsigned char * data;
 
+	FILE * file = fopen("tekstura.jpg", "rb");
+	if (!file) { printf("Image could not be opened\n"); return 0; }
+
+	if (fread(header, 1, 54, file) != 54) { // If not 54 bytes read : problem
+		printf("Not a correct BMP file\n");
+		return 0;
+	}
+	if (header[0] != 'B' || header[1] != 'M') {
+		printf("Not a correct BMP file\n");
+		return 0;
+	}
+
+	dataPos = *(int*)&(header[0x0A]);
+	imageSize = *(int*)&(header[0x22]);
+	width = *(int*)&(header[0x12]);
+	height = *(int*)&(header[0x16]);
+
+	if (imageSize == 0)    imageSize = width * height * 3; // 3 : one byte for each Red, Green and Blue component
+	if (dataPos == 0)      dataPos = 54;
+
+	data = new unsigned char[imageSize];
+
+	// Read the actual data from the file into the buffer
+	fread(data, 1, imageSize, file);
+
+	//Everything is in memory now, the file can be closed
+	fclose(file);
+
+	GLuint textureID;
+	glGenTextures(1, &textureID);
+
+	// "Bind" the newly created texture : all future texture functions will modify this texture
+	glBindTexture(GL_TEXTURE_2D, textureID);
+
+	// Give the image to OpenGL
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
+
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+
+	return textureID;
+}
 
 
 // LoadBitmapFile
@@ -418,53 +516,82 @@ void szescian(void)
 		GLfloat mc[3] = { 10.0f * cos(kat), 10.0f, 10.0f*sin(kat) };
 		GLfloat md[3] = { 0.0f, 10.0f, 0.0f };
 
+		GLfloat ta[3] = { 0.0f,0.0f,0.0f };
+		GLfloat tb[3] = { 0.0f,10.0f,0.0f };
+		GLfloat tc[3] = { 2.0f,0.0f,0.0f };
+		GLfloat td[3] = { 2.0f,10.0f,0.0f };
+		GLfloat te[3] = { 4.0f,0.0f,0.0f };
+		GLfloat tf[3] = { 4.0f,10.0f,0.0f };
+		GLfloat tg[3] = { 6.0f,0.0f,0.0f };
+		GLfloat th[3] = { 6.0f,10.0f,0.0f };
+		GLfloat ti[3] = { 8.0f,0.0f,0.0f };
+		GLfloat tj[3] = { 8.0f,10.0f,0.0f };
+		GLfloat tk[3] = { 10.0f,0.0f,0.0f };
+		GLfloat tl[3] = { 10.0f,10.0f,0.0f };
+
 		// Sciany skladowe
+		/*glColor3f(1.0f, 0.0f, 0.0f);
+		glBegin(GL_TRIANGLE_STRIP);
+		
 		glColor3f(1.0f, 0.0f, 0.0f);
-		glBegin(GL_POLYGON);
-		glVertex3fv(ma);
-		glVertex3fv(mb);
-		glVertex3fv(mc);
-		glVertex3fv(md);
-		glEnd();
+		glVertex3fv(ta);
+		glVertex3fv(tb);
+		glVertex3fv(tc);
+		glColor3f(1.0f, 0.0f, 0.0f);
+		glVertex3fv(td);
+		glColor3f(0.9f, 0.0f, 0.0f);
+		glVertex3fv(te);
+		glColor3f(0.8f, 0.0f, 0.0f);
+		glVertex3fv(tf);
+		glColor3f(0.7f, 0.0f, 0.0f);
+		glVertex3fv(tg);
+		glColor3f(0.6f, 0.0f, 0.0f);
+		glVertex3fv(th);
+		glColor3f(0.5f, 0.0f, 0.0f);
+		glVertex3fv(ti);
+		glColor3f(0.4f, 0.0f, 0.0f);
+		glVertex3fv(tj);
+		glColor3f(0.3f, 0.0f, 0.0f);
+		glVertex3fv(tk);
+		glColor3f(0.2f, 0.0f, 0.0f);
+		glVertex3fv(tl);
 
-		glColor3f(0.0f, 1.0f, 0.0f);
-		glBegin(GL_POLYGON);
-		glVertex3fv(sb);
-		glVertex3fv(sf);
-		glVertex3fv(sg);
-		glVertex3fv(sc);
-		glEnd();
 
-		glColor3f(0.0f, 0.0f, 1.0f);
-		glBegin(GL_POLYGON);
-		glVertex3fv(sf);
-		glVertex3fv(se);
-		glVertex3fv(sh);
-		glVertex3fv(sg);
-		glEnd();
+		glEnd();*/
 
-		glColor3f(1.0f, 1.0f, 0.0f);
-		glBegin(GL_POLYGON);
-		glVertex3fv(se);
-		glVertex3fv(sa);
-		glVertex3fv(sd);
-		glVertex3fv(sh);
-		glEnd();
+		/*glBegin(GL_TRIANGLE_STRIP);
+		float c = 1.05f;
+		float y = 10.0f;
+		glColor3f(c, 0.0f, 0.0f);
+		for (float i = 0.0f; i < 20.0f; i += 0.1) {
+			if (y == 10.0f) y = 0.0f;
+			else y = 10.0f;
+			c -= 0.005f;
+			glColor3f(c, 0.0f, 0.0f);
+			glVertex3f(i, y, 0.0f);
+		}
 
-		glColor3f(0.0f, 1.0f, 1.0f);
-		glBegin(GL_POLYGON);
-		glVertex3fv(sd);
-		glVertex3fv(sc);
-		glVertex3fv(sg);
-		glVertex3fv(sh);
-		glEnd();
+		glEnd();*/
 
-		glColor3f(1.0f, 0.0f, 1.0f);
-		glBegin(GL_POLYGON);
-		glVertex3fv(sa);
-		glVertex3fv(sb);
-		glVertex3fv(sf);
-		glVertex3fv(se);
+		float c = 1.0f;
+		glColor3f(c, 0.f, 0.35f);
+		glBegin(GL_TRIANGLE_STRIP);
+		//glVertex3f(20.0f, 0.0f, 0.0f);
+		float z, x;
+		float temp = 40.0f;
+		for (float pi = 0.f; pi <= 2*GL_PI; pi += 0.01f) {
+			if (temp == 40.0f) {
+				temp = 0.0f;
+			}
+			else {
+				temp = 40.0f;
+			}
+			z = 20 * cos(pi);
+			x = 20 * sin(pi);
+			glVertex3f(x, temp, z);
+			c -= 0.00318/2.0f;
+			glColor3f(c, 0.f, 0.35f);
+		}
 		glEnd();
 	}
 }
@@ -779,9 +906,12 @@ void ramie(double r1, double r2, double h, double d)
 	glEnd();
 }
 
+Lazik laz(0, 0, 30);
+
 void lazik() {
-	Lazik laz(0, 0, 0);
-	laz.rysujLazik();
+	
+	
+
 }
 
 void walec(double r, double h)
@@ -840,7 +970,28 @@ void RenderScene(void)
 	//Sposób na odróŸnienie "przedniej" i "tylniej" œciany wielok¹ta:
 	glPolygonMode(GL_BACK, GL_LINE);
 	//walec(40, 40);
-	lazik();
+
+	glPushMatrix();
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, textures[0]);
+	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+	terrain->draw();
+	glDisable(GL_TEXTURE_2D);
+	glPopMatrix();
+
+	//lazik();
+	glPushMatrix();
+
+	glTranslatef(chX, chY, 0.0); // 3. Translate to the object's position.
+
+	glRotatef(startX, 1.0, 0.0, 0.0); // 2. Rotate the object.
+	glRotatef(startZ + doZ, 0.0, 0.0, 1.0); // 2. Rotate the object.
+
+	//glTranslatef(-250, -250, 0.0); // 1. Translate to the origin.
+
+	// Draw the object
+	laz.rysujLazik();
+	glPopMatrix();
 	//Uzyskanie siatki:
 	//glPolygonMode(GL_FRONT_AND_BACK,GL_LINE);
 
@@ -887,7 +1038,6 @@ void SetDCPixelFormat(HDC hDC)
 	// Set the pixel format for the device context
 	SetPixelFormat(hDC, nPixelFormat, &pfd);
 }
-
 
 
 // If necessary, creates a 3-3-2 palette for the device context listed.
@@ -1062,6 +1212,8 @@ LRESULT CALLBACK WndProc(HWND    hWnd,
 		SetupRC();
 		glGenTextures(2, &texture[0]);                  // tworzy obiekt tekstury			
 
+		textures[0] = LoadTexture("Cast_iron.bmp", 1);
+
 		// ³aduje pierwszy obraz tekstury:
 		//bitmapData = LoadBitmapFile("Bitmapy\\checker.bmp", &bitmapInfoHeader);
 
@@ -1185,7 +1337,7 @@ LRESULT CALLBACK WndProc(HWND    hWnd,
 		// Key press, check for arrow keys to do cube rotation.
 	case WM_KEYDOWN:
 	{
-		if (wParam == VK_UP)
+		/*if (wParam == VK_UP)
 			xRot -= 5.0f;
 
 		if (wParam == VK_DOWN)
@@ -1200,7 +1352,31 @@ LRESULT CALLBACK WndProc(HWND    hWnd,
 		xRot = (const int)xRot % 360;
 		yRot = (const int)yRot % 360;
 
+		InvalidateRect(hWnd, NULL, FALSE);*/
+		camera->update(wParam);
+		
+
+		xRot = (const int)xRot % 360;
+		yRot = (const int)yRot % 360;
+		zRot = (const int)zRot % 360;
+
 		InvalidateRect(hWnd, NULL, FALSE);
+
+		if (wParam == 'J') {
+			doZ += 5;
+		}
+
+		if (wParam == 'L') {
+			doZ -= 5;
+		}
+
+		if (wParam == 'I') {
+			chX += 5;
+		}
+
+		if (wParam == 'K') {
+			chX -= 5;
+		}
 	}
 	break;
 

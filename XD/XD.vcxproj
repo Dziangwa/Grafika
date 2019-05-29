@@ -115,15 +115,29 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="grid.cpp" />
     <ClCompile Include="Lazik.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="object.cpp" />
+    <ClCompile Include="Podloze.cpp" />
     <ClCompile Include="Prostopadloscian.cpp" />
     <ClCompile Include="Walec.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Camera.h" />
+    <ClInclude Include="grid.h" />
     <ClInclude Include="Lazik.h" />
+    <ClInclude Include="object.h" />
+    <ClInclude Include="OBJ_Loader.h" />
+    <ClInclude Include="Podloze.h" />
     <ClInclude Include="Prostopadloscian.h" />
+    <ClInclude Include="stb_image.h" />
     <ClInclude Include="Walec.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="fragment.shader" />
+    <None Include="fragment2.shader" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
