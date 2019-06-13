@@ -7,25 +7,26 @@ c:\users\root\source\repos\xd\xd\obj_loader.h(653): warning C4018: '<': signed/u
 c:\users\root\source\repos\xd\xd\obj_loader.h(690): warning C4018: '<': signed/unsigned mismatch
 c:\users\root\source\repos\xd\xd\obj_loader.h(696): warning C4018: '<': signed/unsigned mismatch
 c:\users\root\source\repos\xd\xd\obj_loader.h(950): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-c:\users\root\source\repos\xd\xd\main.cpp(117): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
-c:\users\root\source\repos\xd\xd\main.cpp(486): warning C4018: '<': signed/unsigned mismatch
-c:\users\root\source\repos\xd\xd\main.cpp(592): warning C4305: '-=': truncation from 'double' to 'float'
-c:\users\root\source\repos\xd\xd\main.cpp(613): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
-c:\users\root\source\repos\xd\xd\main.cpp(629): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
-c:\users\root\source\repos\xd\xd\main.cpp(646): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
-c:\users\root\source\repos\xd\xd\main.cpp(654): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
-c:\users\root\source\repos\xd\xd\main.cpp(673): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\root\source\repos\xd\xd\main.cpp(679): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\root\source\repos\xd\xd\main.cpp(985): warning C4244: 'argument': conversion from 'GLdouble' to 'GLfloat', possible loss of data
-c:\users\root\source\repos\xd\xd\main.cpp(987): warning C4244: 'argument': conversion from 'GLdouble' to 'GLfloat', possible loss of data
-c:\users\root\source\repos\xd\xd\main.cpp(988): warning C4244: 'argument': conversion from 'GLdouble' to 'GLfloat', possible loss of data
-c:\users\root\source\repos\xd\xd\main.cpp(1359): warning C4244: '=': conversion from 'int' to 'GLfloat', possible loss of data
-c:\users\root\source\repos\xd\xd\main.cpp(1360): warning C4244: '=': conversion from 'int' to 'GLfloat', possible loss of data
-c:\users\root\source\repos\xd\xd\main.cpp(1361): warning C4244: '=': conversion from 'int' to 'GLfloat', possible loss of data
-c:\users\root\source\repos\xd\xd\main.cpp(1425): warning C4101: 'i': unreferenced local variable
-c:\users\root\source\repos\xd\xd\main.cpp(1426): warning C4101: 'glError': unreferenced local variable
+c:\users\root\source\repos\xd\xd\main.cpp(126): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
+c:\users\root\source\repos\xd\xd\main.cpp(127): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
+c:\users\root\source\repos\xd\xd\main.cpp(504): warning C4018: '<': signed/unsigned mismatch
+c:\users\root\source\repos\xd\xd\main.cpp(610): warning C4305: '-=': truncation from 'double' to 'float'
+c:\users\root\source\repos\xd\xd\main.cpp(631): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+c:\users\root\source\repos\xd\xd\main.cpp(647): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+c:\users\root\source\repos\xd\xd\main.cpp(664): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+c:\users\root\source\repos\xd\xd\main.cpp(672): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+c:\users\root\source\repos\xd\xd\main.cpp(691): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\root\source\repos\xd\xd\main.cpp(697): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\root\source\repos\xd\xd\main.cpp(1054): warning C4244: 'argument': conversion from 'GLdouble' to 'GLfloat', possible loss of data
+c:\users\root\source\repos\xd\xd\main.cpp(1056): warning C4244: 'argument': conversion from 'GLdouble' to 'GLfloat', possible loss of data
+c:\users\root\source\repos\xd\xd\main.cpp(1057): warning C4244: 'argument': conversion from 'GLdouble' to 'GLfloat', possible loss of data
+c:\users\root\source\repos\xd\xd\main.cpp(1481): warning C4244: '=': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\root\source\repos\xd\xd\main.cpp(1482): warning C4244: '=': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\root\source\repos\xd\xd\main.cpp(1483): warning C4244: '=': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\root\source\repos\xd\xd\main.cpp(1546): warning C4101: 'i': unreferenced local variable
+c:\users\root\source\repos\xd\xd\main.cpp(1547): warning C4101: 'glError': unreferenced local variable
   Generating code
-  3 of 1041 functions ( 0.3%) were compiled, the rest were copied from previous compilation.
+  2 of 1048 functions ( 0.2%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
     0 functions had inline decision re-evaluated but remain unchanged
   Finished generating code

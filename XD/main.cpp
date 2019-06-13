@@ -36,6 +36,7 @@
 #define ID_LIGHTING_AMBIENTLIGHT        40005
 #define STB_IMAGE_IMPLEMENTATION
 
+
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED
@@ -75,6 +76,7 @@
 #include "Camera.h"
 #include "OBJ_Loader.h"
 #include "object.h"
+#include "freeglut/include/GL/freeglut.h"
 
 #define glRGB(x, y, z)	glColor3ub((GLubyte)x, (GLubyte)y, (GLubyte)z)
 #define BITMAP_ID 0x4D42		// identyfikator formatu BMP
@@ -87,6 +89,8 @@ HPALETTE hPalette = NULL;
 static LPCTSTR lpszAppName = "XD";
 static HINSTANCE hInstance;
 
+bool keys[256];
+
 // Rotation amounts
 static GLfloat xRot = 0.0f;
 static GLfloat yRot = 0.0f;
@@ -98,7 +102,8 @@ static GLdouble startX = -90;
 static GLdouble startZ = 0;
 static GLdouble doZ = 0;
 static GLdouble chX = 0;
-static GLdouble chY = 0;
+static GLdouble chZ = 0;
+static GLdouble speed = 0;
 
 
 static GLsizei lastHeight;
@@ -109,13 +114,26 @@ BITMAPINFOHEADER	bitmapInfoHeader;	// nag³ówek obrazu
 unsigned char*		bitmapData;			// dane tekstury
 unsigned int		texture[2];			// obiekt tekstury
 
-unsigned int textures[3];
+unsigned int textures[5];
 GLfloat rot[] = { 0,1,0,0 };
+GLfloat rot1[] = { 0,1,0,0 };
 
 GLfloat pos1[3] = { 0,0,-5 };
+GLfloat pos2[3] = { 100,10,-50 };
+GLfloat pos3[3] = { 200,10,-70 };
+GLfloat pos4[3] = { 10,200,-70 };
 
-GLfloat color1[3] = { 0.9,0.49,0.07 };
-auto terrain = new object{ &textures[0], "landscape.obj", color1, pos1, rot, 20 };
+GLfloat color1[3] = { 0,0.6,0 };
+GLfloat color2[3] = { 0.27,0.24,0.285 };
+GLfloat color3[3] = { 0,0.5,0 };
+
+auto terrain = new object{ &textures[0], "terrain/landscape.obj", color1, pos1, rot, 20 };
+auto trunk1 = new object{ &textures[1], "trunk/trunk.obj", color2, pos2, rot1, 20 };
+auto trunk2 = new object{ &textures[1], "trunk/trunk.obj", color2, pos3, rot1, 20 };
+auto trunk3 = new object{ &textures[1], "trunk/trunk.obj", color2, pos4, rot1, 20 };
+auto leafs1 = new object{ &textures[1], "leafs/leafs.obj", color3, pos2, rot1, 20 };
+auto leafs2 = new object{ &textures[1], "leafs/leafs.obj", color3, pos3, rot1, 20 };
+auto leafs3 = new object{ &textures[1], "leafs/leafs.obj", color3, pos4, rot1, 20 };
 auto camera = new Camera{};
 
 
@@ -908,12 +926,6 @@ void ramie(double r1, double r2, double h, double d)
 
 Lazik laz(0, 0, 30);
 
-void lazik() {
-	
-	
-
-}
-
 void walec(double r, double h)
 {
 	double x, y, alpha, PI = 3.14;
@@ -979,10 +991,67 @@ void RenderScene(void)
 	glDisable(GL_TEXTURE_2D);
 	glPopMatrix();
 
+	glPushMatrix();
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, textures[1]);
+	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+	trunk1->draw();
+	glDisable(GL_TEXTURE_2D);
+	glPopMatrix();
+
+	glPushMatrix();
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, textures[1]);
+	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+	trunk2->draw();
+	glDisable(GL_TEXTURE_2D);
+	glPopMatrix();
+
+	glPushMatrix();
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, textures[1]);
+	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+	trunk3->draw();
+	glDisable(GL_TEXTURE_2D);
+	glPopMatrix();
+
+	glPushMatrix();
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, textures[1]);
+	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+	leafs1->draw();
+	glDisable(GL_TEXTURE_2D);
+	glPopMatrix();
+
+	glPushMatrix();
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, textures[1]);
+	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+	leafs2->draw();
+	glDisable(GL_TEXTURE_2D);
+	glPopMatrix();
+
+	glPushMatrix();
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, textures[1]);
+	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+	leafs3->draw();
+	glDisable(GL_TEXTURE_2D);
+	glPopMatrix();
+
+	/*glPushMatrix();
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, textures[1]);
+	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+	trunk->draw();
+	glDisable(GL_TEXTURE_2D);
+	glPopMatrix();*/
+
 	//lazik();
 	glPushMatrix();
 
-	glTranslatef(chX, chY, 0.0); // 3. Translate to the object's position.
+
+	glTranslatef(chX, -60.0, chZ); // 3. Translate to the object's position.
 
 	glRotatef(startX, 1.0, 0.0, 0.0); // 2. Rotate the object.
 	glRotatef(startZ + doZ, 0.0, 0.0, 1.0); // 2. Rotate the object.
@@ -1006,8 +1075,36 @@ void RenderScene(void)
 
 	// Flush drawing commands
 	glFlush();
+	if (keys['J']) {
+		doZ += 5;
+	}
+
+	if (keys['L']) {
+		doZ -= 5;
+	}
+	GLdouble odl1 = sqrt(pow(chX - pos2[0], 2) + pow(chZ - pos2[1], 2));
+	GLdouble odl2 = sqrt(pow(chX - pos3[0], 2) + pow(chZ - pos3[1], 2));
+	GLdouble odl3 = sqrt(pow(chX - pos4[0], 2) + pow(chZ - pos4[1], 2));
+	GLdouble col = 50;
+	if (odl1 > col && odl2 > col && odl3 > col) {
+		if (keys['K']) {
+			//speed += 10;
+			chX += sin((startZ + doZ + 90)*GL_PI / 180) * 5;
+			chZ += cos((startZ + doZ + 90)*GL_PI / 180) * 5;
+		}
+
+		if (keys['I']) {
+			//speed -= 10;	
+			chX -= sin((startZ + doZ + 90)*GL_PI / 180) * 5;
+			chZ -= cos((startZ + doZ + 90)*GL_PI / 180) * 5;
+		}
+	}
 }
 
+//void timer(int) {
+//	RenderScene();
+//	glutTimerFunc(1000.0 / 60.0, timer, 0);
+//}
 
 // Select the pixel format for a given device context
 void SetDCPixelFormat(HDC hDC)
@@ -1193,13 +1290,14 @@ LRESULT CALLBACK WndProc(HWND    hWnd,
 	static HGLRC hRC;               // Permenant Rendering context
 	static HDC hDC;                 // Private GDI Device context
 
+
 	switch (message)
 	{
 		// Window creation, setup for OpenGL
 	case WM_CREATE:
 		// Store the device context
 		hDC = GetDC(hWnd);
-
+		//glutTimerFunc(1000.0 / 60.0, timer, 0);
 		// Select the pixel format
 		SetDCPixelFormat(hDC);
 
@@ -1212,7 +1310,10 @@ LRESULT CALLBACK WndProc(HWND    hWnd,
 		SetupRC();
 		glGenTextures(2, &texture[0]);                  // tworzy obiekt tekstury			
 
-		textures[0] = LoadTexture("Cast_iron.bmp", 1);
+		textures[0] = LoadTexture("grass.png", 1);
+		textures[1] = LoadTexture("grass.png", 1);
+
+
 
 		// ³aduje pierwszy obraz tekstury:
 		//bitmapData = LoadBitmapFile("Bitmapy\\checker.bmp", &bitmapInfoHeader);
@@ -1335,6 +1436,25 @@ LRESULT CALLBACK WndProc(HWND    hWnd,
 		break;
 
 		// Key press, check for arrow keys to do cube rotation.
+	case WM_KEYUP:
+	{
+		if (wParam == 'J') {
+			keys['J'] = false;
+		}
+
+		if (wParam == 'L') {
+			keys['L'] = false;
+		}
+
+		if (wParam == 'K') {
+			keys['K'] = false;
+		}
+
+		if (wParam == 'I') {
+			keys['I'] = false;
+		}
+	}
+	break;
 	case WM_KEYDOWN:
 	{
 		/*if (wParam == VK_UP)
@@ -1353,8 +1473,10 @@ LRESULT CALLBACK WndProc(HWND    hWnd,
 		yRot = (const int)yRot % 360;
 
 		InvalidateRect(hWnd, NULL, FALSE);*/
+
+		//TODO renderowanie cykliczne, antweakbar, fabu³a z pieni¹¿kami i pomiarem czase, mo¿liwoœæ kilku graczy
+
 		camera->update(wParam);
-		
 
 		xRot = (const int)xRot % 360;
 		yRot = (const int)yRot % 360;
@@ -1363,19 +1485,19 @@ LRESULT CALLBACK WndProc(HWND    hWnd,
 		InvalidateRect(hWnd, NULL, FALSE);
 
 		if (wParam == 'J') {
-			doZ += 5;
+			keys['J'] = true;
 		}
 
 		if (wParam == 'L') {
-			doZ -= 5;
-		}
-
-		if (wParam == 'I') {
-			chX += 5;
+			keys['L'] = true;
 		}
 
 		if (wParam == 'K') {
-			chX -= 5;
+			keys['K'] = true;
+		}
+
+		if (wParam == 'I') {
+			keys['I'] = true;
 		}
 	}
 	break;
@@ -1406,7 +1528,6 @@ LRESULT CALLBACK WndProc(HWND    hWnd,
 		return (DefWindowProc(hWnd, message, wParam, lParam));
 
 	}
-
 	return (0L);
 }
 
