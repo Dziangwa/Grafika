@@ -112,30 +112,35 @@ static GLdouble chZ = 0;
 static GLdouble speed = 0;
 static GLdouble speed2 = 0;
 
-float coinsPositions1[3] = { 0,0,0 };
-float coinsPositions2[3] = { 0,0,0 };
-float coinsPositions3[3] = { 0,0,0 };
-float coinsPositions4[3] = { 0,0,0 };
-float coinsPositions5[3] = { 0,0,0 };
+clock_t begin;
+clock_t end;
+double elapsedTime[3];
 
-Coin coin1 = Coin(coinsPositions1[0], coinsPositions1[1], -60, 20, 30, "zolty");
-Coin coin2 = Coin(coinsPositions2[0], coinsPositions2[1], -60, 20, 30, "zolty");
-Coin coin3 = Coin(coinsPositions3[0], coinsPositions3[1], -60, 20, 30, "zolty");
-Coin coin4 = Coin(coinsPositions4[0], coinsPositions4[1], -60, 20, 30, "zolty");
-Coin coin5 = Coin(coinsPositions5[0], coinsPositions5[1], -60, 20, 30, "zolty");
+float coinsPositions1[3] = { 0,0,-40 };
+float coinsPositions2[3] = { 0,0,-40 };
+float coinsPositions3[3] = { 0,0,-40 };
+float coinsPositions4[3] = { 0,0,-40 };
+float coinsPositions5[3] = { 0,0,-40 };
 
-int game;
+Coin coin1 = Coin(coinsPositions1[0], coinsPositions1[1], -80, 20, 30, "zolty");
+Coin coin2 = Coin(coinsPositions2[0], coinsPositions2[1], -80, 20, 30, "zolty");
+Coin coin3 = Coin(coinsPositions3[0], coinsPositions3[1], -80, 20, 30, "zolty");
+Coin coin4 = Coin(coinsPositions4[0], coinsPositions4[1], -80, 20, 30, "zolty");
+Coin coin5 = Coin(coinsPositions5[0], coinsPositions5[1], -80, 20, 30, "zolty");
+int game = -1;
 bool gameOn = false;
+int coinsLeft = 0;
 
 Lazik laz(0, 0, 30);
 UINT TimerId = SetTimer(NULL, 1, 5, &TimerProc);
 
 void CALLBACK TimerProc(HWND hWnd, UINT nMsg, UINT nIDEvent, DWORD dwTime)
 {
-	/*RenderScene();
-	static HDC hDC;
-	SwapBuffers(hDC);*/
 	InvalidateRect(hWnd, NULL, FALSE);
+	if (gameOn) {
+		end = clock();
+		elapsedTime[game] = double(end - begin) / CLOCKS_PER_SEC;
+	}
 }
 
 static GLsizei lastHeight;
@@ -192,7 +197,6 @@ unsigned int LoadTexture(const char* file, GLenum textureSlot)
 	stbi_image_free(data);
 	return texHandle;
 }
-
 
 // Declaration for Window procedure
 LRESULT CALLBACK WndProc(HWND    hWnd,
@@ -398,11 +402,16 @@ void RenderScene(void)
 	if (gameOn) {
 		glPushMatrix();
 		glRotatef(startX, 1.0, 0.0, 0.0);
-		coin1.rysujWalec();
-		coin2.rysujWalec();
-		coin3.rysujWalec();
-		coin4.rysujWalec();
-		coin5.rysujWalec();
+		if (!coin1.taken)
+			coin1.rysujWalec();
+		if (!coin2.taken)
+			coin2.rysujWalec();
+		if (!coin3.taken)
+			coin3.rysujWalec();
+		if (!coin4.taken)
+			coin4.rysujWalec();
+		if (!coin5.taken)
+			coin5.rysujWalec();
 		glPopMatrix();
 	}
 
@@ -417,9 +426,11 @@ void RenderScene(void)
 	if (keys['L']) {
 		doZ -= 5;
 	}
+
 	GLdouble odl1 = sqrt(pow(chX - pos2[0], 2) + pow(chZ - pos2[1], 2));
 	GLdouble odl2 = sqrt(pow(chX - pos3[0], 2) + pow(chZ - pos3[1], 2));
 	GLdouble odl3 = sqrt(pow(chX - pos4[0], 2) + pow(chZ - pos4[1], 2));
+
 	GLdouble col = 50;
 	if (keys['K']) {
 		if (speed < 5)
@@ -451,10 +462,14 @@ void RenderScene(void)
 
 	if (keys['B']) {
 		if (!gameOn) {
+			game++;
+			if (game == 3)
+				game = 0;
 			gameOn = true;
 			chX = 0;
 			chZ = 0;
 			speed = 0;
+			coinsLeft = 5;
 
 			coinsPositions1[0] = (rand() % 2000) - 1000;
 			coinsPositions1[1] = (rand() % 2000) - 1000;
@@ -471,13 +486,77 @@ void RenderScene(void)
 			coinsPositions5[0] = (rand() % 2000) - 1000;
 			coinsPositions5[1] = (rand() % 2000) - 1000;
 
-			coin1.ustawPozycje(coinsPositions1[0], coinsPositions1[1], coinsPositions1[2]);
-			coin2.ustawPozycje(coinsPositions2[0], coinsPositions2[1], coinsPositions2[2]);
-			coin3.ustawPozycje(coinsPositions3[0], coinsPositions3[1], coinsPositions3[2]);
-			coin4.ustawPozycje(coinsPositions4[0], coinsPositions4[1], coinsPositions4[2]);
-			coin5.ustawPozycje(coinsPositions5[0], coinsPositions5[1], coinsPositions5[2]);
+			coin1.ustawPozycje(coinsPositions1[0], coinsPositions1[1], 0);
+			coin2.ustawPozycje(coinsPositions2[0], coinsPositions2[1], 0);
+			coin3.ustawPozycje(coinsPositions3[0], coinsPositions3[1], 0);
+			coin4.ustawPozycje(coinsPositions4[0], coinsPositions4[1], 0);
+			coin5.ustawPozycje(coinsPositions5[0], coinsPositions5[1], 0);
+
+			coin1.taken = false;
+			coin2.taken = false;
+			coin3.taken = false;
+			coin4.taken = false;
+			coin5.taken = false;
+			begin = clock();
 		}
 	}
+
+	GLdouble odlCoin1 = sqrt(pow(chX - coinsPositions1[0], 2) + pow(chZ + coinsPositions1[1], 2));
+	GLdouble odlCoin2 = sqrt(pow(chX - coinsPositions2[0], 2) + pow(chZ + coinsPositions2[1], 2));
+	GLdouble odlCoin3 = sqrt(pow(chX - coinsPositions3[0], 2) + pow(chZ + coinsPositions3[1], 2));
+	GLdouble odlCoin4 = sqrt(pow(chX - coinsPositions4[0], 2) + pow(chZ + coinsPositions4[1], 2));
+	GLdouble odlCoin5 = sqrt(pow(chX - coinsPositions5[0], 2) + pow(chZ + coinsPositions5[1], 2));
+
+	if (!coin1.taken)
+		if (odlCoin1 <= 100) {
+			coin1.taken = true;
+			coinsLeft--;
+			if (coinsLeft == 0) {
+				gameOn = false;
+				end = clock();
+				elapsedTime[game] = double(end - begin) / CLOCKS_PER_SEC;
+			}
+		}
+	if (!coin2.taken)
+		if (odlCoin2 <= 100) {
+			coin2.taken = true;
+			coinsLeft--;
+			if (coinsLeft == 0) {
+				gameOn = false;
+				end = clock();
+				elapsedTime[game] = double(end - begin) / CLOCKS_PER_SEC;
+			}
+		}
+	if (!coin3.taken)
+		if (odlCoin3 <= 100) {
+			coin3.taken = true;
+			coinsLeft--;
+			if (coinsLeft == 0) {
+				gameOn = false;
+				end = clock();
+				elapsedTime[game] = double(end - begin) / CLOCKS_PER_SEC;
+			}
+		}
+	if (!coin4.taken)
+		if (odlCoin4 <= 100) {
+			coin4.taken = true;
+			coinsLeft--;
+			if (coinsLeft == 0) {
+				gameOn = false;
+				end = clock();
+				elapsedTime[game] = double(end - begin) / CLOCKS_PER_SEC;
+			}
+		}
+	if (!coin5.taken)
+		if (odlCoin5 <= 100) {
+			coin5.taken = true;
+			coinsLeft--;
+			if (coinsLeft == 0) {
+				gameOn = false;
+				end = clock();
+				elapsedTime[game] = double(end - begin) / CLOCKS_PER_SEC;
+			}
+		}
 
 	speed2 = -speed;
 	TwDraw();
@@ -588,11 +667,6 @@ HPALETTE GetOpenGLPalette(HDC hDC)
 	return hRetPal;
 }
 
-void timer(int) {
-	glutPostRedisplay();
-	//RenderScene();
-	glutTimerFunc(1000 / 60, timer, 0);
-}
 
 // Entry point of all Windows programs
 int APIENTRY WinMain(HINSTANCE       hInst,
@@ -656,6 +730,11 @@ int APIENTRY WinMain(HINSTANCE       hInst,
 	TwAddVarRW(myBar, "X", TW_TYPE_DOUBLE, &chX, "");
 	TwAddVarRW(myBar, "Y", TW_TYPE_DOUBLE, &chZ, "");
 	TwAddVarRW(myBar, "Speed", TW_TYPE_DOUBLE, &speed2, "");
+	TwAddVarRW(myBar, "Coins left", TW_TYPE_INT16, &coinsLeft, "");
+	TwAddVarRW(myBar, "Player 1", TW_TYPE_DOUBLE, &elapsedTime, "");
+	TwAddVarRW(myBar, "Player 2", TW_TYPE_DOUBLE, &elapsedTime[1], "");
+	TwAddVarRW(myBar, "Player 3", TW_TYPE_DOUBLE, &elapsedTime[2], "");
+	//TwAddButton(myBar, "Run", RunCB, NULL, "label = 'Pokemon'");
 
 	// Display the window
 	ShowWindow(hWnd, SW_SHOW);
@@ -672,9 +751,6 @@ int APIENTRY WinMain(HINSTANCE       hInst,
 
 	return msg.wParam;
 }
-
-
-
 
 // Window procedure, handles all messages for this program
 LRESULT CALLBACK WndProc(HWND    hWnd,
