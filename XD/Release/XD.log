@@ -13,26 +13,26 @@ c:\users\root\source\repos\xd\xd\main.cpp(392): warning C4244: 'argument': conve
 c:\users\root\source\repos\xd\xd\main.cpp(393): warning C4244: 'argument': conversion from 'GLdouble' to 'GLfloat', possible loss of data
 c:\users\root\source\repos\xd\xd\main.cpp(394): warning C4244: 'argument': conversion from 'GLdouble' to 'GLfloat', possible loss of data
 c:\users\root\source\repos\xd\xd\main.cpp(400): warning C4244: 'argument': conversion from 'GLdouble' to 'GLfloat', possible loss of data
-c:\users\root\source\repos\xd\xd\main.cpp(420): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+c:\users\root\source\repos\xd\xd\main.cpp(409): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+c:\users\root\source\repos\xd\xd\main.cpp(459): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\root\source\repos\xd\xd\main.cpp(460): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\root\source\repos\xd\xd\main.cpp(462): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\root\source\repos\xd\xd\main.cpp(463): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\root\source\repos\xd\xd\main.cpp(465): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\root\source\repos\xd\xd\main.cpp(466): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\root\source\repos\xd\xd\main.cpp(468): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\root\source\repos\xd\xd\main.cpp(469): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\root\source\repos\xd\xd\main.cpp(471): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
 c:\users\root\source\repos\xd\xd\main.cpp(472): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-c:\users\root\source\repos\xd\xd\main.cpp(473): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-c:\users\root\source\repos\xd\xd\main.cpp(475): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-c:\users\root\source\repos\xd\xd\main.cpp(476): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-c:\users\root\source\repos\xd\xd\main.cpp(478): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-c:\users\root\source\repos\xd\xd\main.cpp(479): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-c:\users\root\source\repos\xd\xd\main.cpp(481): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-c:\users\root\source\repos\xd\xd\main.cpp(482): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-c:\users\root\source\repos\xd\xd\main.cpp(484): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-c:\users\root\source\repos\xd\xd\main.cpp(485): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-c:\users\root\source\repos\xd\xd\main.cpp(884): warning C4244: '=': conversion from 'int' to 'GLfloat', possible loss of data
-c:\users\root\source\repos\xd\xd\main.cpp(885): warning C4244: '=': conversion from 'int' to 'GLfloat', possible loss of data
-c:\users\root\source\repos\xd\xd\main.cpp(886): warning C4244: '=': conversion from 'int' to 'GLfloat', possible loss of data
-c:\users\root\source\repos\xd\xd\main.cpp(952): warning C4101: 'i': unreferenced local variable
-c:\users\root\source\repos\xd\xd\main.cpp(953): warning C4101: 'glError': unreferenced local variable
+c:\users\root\source\repos\xd\xd\main.cpp(871): warning C4244: '=': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\root\source\repos\xd\xd\main.cpp(872): warning C4244: '=': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\root\source\repos\xd\xd\main.cpp(873): warning C4244: '=': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\root\source\repos\xd\xd\main.cpp(939): warning C4101: 'i': unreferenced local variable
+c:\users\root\source\repos\xd\xd\main.cpp(940): warning C4101: 'glError': unreferenced local variable
 LINK : warning LNK4075: ignoring '/INCREMENTAL' due to '/LTCG' specification
   Generating code
   2 of 1066 functions ( 0.2%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    0 functions had inline decision re-evaluated but remain unchanged
+    1 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   XD.vcxproj -> C:\Users\root\source\repos\XD\Release\XD.exe

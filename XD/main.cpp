@@ -406,20 +406,7 @@ void RenderScene(void)
 		glPopMatrix();
 	}
 
-	//if (gameOn) {
-	//	for (int i = 0; i < 5; i++) {
-	//		if (coins[i] != NULL) {
-	////			//glPushMatrix();
-	////			//glTranslatef(coinsPositions[i][0], -60.0, coinsPositions[i][2]); // 3. Translate to the object's position.
-	//			(*(coins + i))->rysujWalec();
-	////			//glPopMatrix();
-	//		}
-	//	}
-	//}
-
 	srand(time(NULL));
-
-
 
 	glMatrixMode(GL_MODELVIEW);
 	glFlush();
@@ -463,7 +450,7 @@ void RenderScene(void)
 	}
 
 	if (keys['B']) {
-		//if (!gameOn) {
+		if (!gameOn) {
 			gameOn = true;
 			chX = 0;
 			chZ = 0;
@@ -489,7 +476,7 @@ void RenderScene(void)
 			coin3.ustawPozycje(coinsPositions3[0], coinsPositions3[1], coinsPositions3[2]);
 			coin4.ustawPozycje(coinsPositions4[0], coinsPositions4[1], coinsPositions4[2]);
 			coin5.ustawPozycje(coinsPositions5[0], coinsPositions5[1], coinsPositions5[2]);
-		//}
+		}
 	}
 
 	speed2 = -speed;
