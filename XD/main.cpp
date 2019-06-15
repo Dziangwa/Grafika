@@ -77,6 +77,11 @@
 #include "OBJ_Loader.h"
 #include "object.h"
 #include "freeglut/include/GL/freeglut.h"
+#include "AntTweakBar.h"
+#include "Coin.h"
+#include <ctime>
+#include <cstdlib>
+#pragma comment(lib, "lib/AntTweakBar.lib")
 
 #define glRGB(x, y, z)	glColor3ub((GLubyte)x, (GLubyte)y, (GLubyte)z)
 #define BITMAP_ID 0x4D42		// identyfikator formatu BMP
@@ -90,7 +95,8 @@ static LPCTSTR lpszAppName = "XD";
 static HINSTANCE hInstance;
 
 bool keys[256];
-
+void CALLBACK TimerProc(HWND hWnd, UINT nMsg, UINT nIDEvent, DWORD dwTime);
+void RenderScene(void);
 // Rotation amounts
 static GLfloat xRot = 0.0f;
 static GLfloat yRot = 0.0f;
@@ -104,7 +110,33 @@ static GLdouble doZ = 0;
 static GLdouble chX = 0;
 static GLdouble chZ = 0;
 static GLdouble speed = 0;
+static GLdouble speed2 = 0;
 
+float coinsPositions1[3] = { 0,0,0 };
+float coinsPositions2[3] = { 0,0,0 };
+float coinsPositions3[3] = { 0,0,0 };
+float coinsPositions4[3] = { 0,0,0 };
+float coinsPositions5[3] = { 0,0,0 };
+
+Coin coin1 = Coin(coinsPositions1[0], coinsPositions1[1], -60, 20, 30, "zolty");
+Coin coin2 = Coin(coinsPositions2[0], coinsPositions2[1], -60, 20, 30, "zolty");
+Coin coin3 = Coin(coinsPositions3[0], coinsPositions3[1], -60, 20, 30, "zolty");
+Coin coin4 = Coin(coinsPositions4[0], coinsPositions4[1], -60, 20, 30, "zolty");
+Coin coin5 = Coin(coinsPositions5[0], coinsPositions5[1], -60, 20, 30, "zolty");
+
+int game;
+bool gameOn = false;
+
+Lazik laz(0, 0, 30);
+UINT TimerId = SetTimer(NULL, 1, 5, &TimerProc);
+
+void CALLBACK TimerProc(HWND hWnd, UINT nMsg, UINT nIDEvent, DWORD dwTime)
+{
+	/*RenderScene();
+	static HDC hDC;
+	SwapBuffers(hDC);*/
+	InvalidateRect(hWnd, NULL, FALSE);
+}
 
 static GLsizei lastHeight;
 static GLsizei lastWidth;
@@ -271,695 +303,15 @@ void ChangeSize(GLsizei w, GLsizei h)
 // the scene.
 void SetupRC()
 {
-	// Light values and coordinates
-	//GLfloat  ambientLight[] = { 0.3f, 0.3f, 0.3f, 1.0f };
-	//GLfloat  diffuseLight[] = { 0.7f, 0.7f, 0.7f, 1.0f };
-	//GLfloat  specular[] = { 1.0f, 1.0f, 1.0f, 1.0f};
-	//GLfloat	 lightPos[] = { 0.0f, 150.0f, 150.0f, 1.0f };
-	//GLfloat  specref[] =  { 1.0f, 1.0f, 1.0f, 1.0f };
-
-
 	glEnable(GL_DEPTH_TEST);	// Hidden surface removal
 	glFrontFace(GL_CCW);		// Counter clock-wise polygons face out
-	//glEnable(GL_CULL_FACE);		// Do not calculate inside of jet
-
-	// Enable lighting
-	//glEnable(GL_LIGHTING);
-
-	// Setup and enable light 0
-	//glLightfv(GL_LIGHT0,GL_AMBIENT,ambientLight);
-	//glLightfv(GL_LIGHT0,GL_DIFFUSE,diffuseLight);
-	//glLightfv(GL_LIGHT0,GL_SPECULAR,specular);
-	//glLightfv(GL_LIGHT0,GL_POSITION,lightPos);
-	//glEnable(GL_LIGHT0);
-
-	// Enable color tracking
-	//glEnable(GL_COLOR_MATERIAL);
-
-	// Set Material properties to follow glColor values
-	//glColorMaterial(GL_FRONT, GL_AMBIENT_AND_DIFFUSE);
-
-	// All materials hereafter have full specular reflectivity
-	// with a high shine
-	//glMaterialfv(GL_FRONT, GL_SPECULAR,specref);
-	//glMateriali(GL_FRONT,GL_SHININESS,128);
-
-
-	// White background
+	
 	glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
-	// Black brush
 	glColor3f(0.0, 0.0, 0.0);
 }
 
-void skrzynka(void)
-{
-	glColor3d(0.8, 0.7, 0.3);
 
-
-	glEnable(GL_TEXTURE_2D); // W≥πcz teksturowanie
-
-	glBindTexture(GL_TEXTURE_2D, texture[0]);
-	glBegin(GL_QUADS);
-	glNormal3d(0, 0, 1);
-	glTexCoord2d(1.0, 1.0); glVertex3d(25, 25, 25);
-	glTexCoord2d(0.0, 1.0); glVertex3d(-25, 25, 25);
-	glTexCoord2d(0.0, 0.0); glVertex3d(-25, -25, 25);
-	glTexCoord2d(1.0, 0.0); glVertex3d(25, -25, 25);
-	glEnd();
-	glBindTexture(GL_TEXTURE_2D, texture[1]);
-	glBegin(GL_QUADS);
-	glNormal3d(1, 0, 0);
-	glTexCoord2d(1.0, 1.0); glVertex3d(25, 25, 25);
-	glTexCoord2d(0.0, 1.0); glVertex3d(25, -25, 25);
-	glTexCoord2d(0.0, 0.0); glVertex3d(25, -25, -25);
-	glTexCoord2d(1.0, 0.0); glVertex3d(25, 25, -25);
-	glEnd();
-
-	glDisable(GL_TEXTURE_2D); // Wy≥πcz teksturowanie
-
-
-
-	glBegin(GL_QUADS);
-	glNormal3d(0, 0, -1);
-	glVertex3d(25, 25, -25);
-	glVertex3d(25, -25, -25);
-	glVertex3d(-25, -25, -25);
-	glVertex3d(-25, 25, -25);
-
-	glNormal3d(-1, 0, 0);
-	glVertex3d(-25, 25, -25);
-	glVertex3d(-25, -25, -25);
-	glVertex3d(-25, -25, 25);
-	glVertex3d(-25, 25, 25);
-
-	glNormal3d(0, 1, 0);
-	glVertex3d(25, 25, 25);
-	glVertex3d(25, 25, -25);
-	glVertex3d(-25, 25, -25);
-	glVertex3d(-25, 25, 25);
-
-	glNormal3d(0, -1, 0);
-	glVertex3d(25, -25, 25);
-	glVertex3d(-25, -25, 25);
-	glVertex3d(-25, -25, -25);
-	glVertex3d(25, -25, -25);
-	glEnd();
-}
-
-void walec01(void)
-{
-	GLUquadricObj*obj;
-	obj = gluNewQuadric();
-	gluQuadricNormals(obj, GLU_SMOOTH);
-	glColor3d(1, 0, 0);
-	glPushMatrix();
-	gluCylinder(obj, 20, 20, 30, 15, 7);
-	gluCylinder(obj, 0, 20, 0, 15, 7);
-	glTranslated(0, 0, 60);
-	glRotated(180.0, 0, 1, 0);
-	gluCylinder(obj, 0, 20, 30, 15, 7);
-	glPopMatrix();
-}
-
-void kula(void)
-{
-	GLUquadricObj*obj;
-	obj = gluNewQuadric();
-	gluQuadricTexture(obj, GL_TRUE);
-	glBindTexture(GL_TEXTURE_2D, texture[0]);
-	glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
-	glColor3d(1.0, 0.8, 0.8);
-	glEnable(GL_TEXTURE_2D);
-	gluSphere(obj, 40, 15, 7);
-	glDisable(GL_TEXTURE_2D);
-}
-
-GLuint loadBMP_custom(const char* path) {
-	unsigned char header[54]; // Each BMP file begins by a 54-bytes header
-	unsigned int dataPos;     // Position in the file where the actual data begins
-	unsigned int width, height;
-	unsigned int imageSize;   // = width*height*3
-	// Actual RGB data
-	unsigned char * data;
-
-	FILE * file = fopen("tekstura.jpg", "rb");
-	if (!file) { printf("Image could not be opened\n"); return 0; }
-
-	if (fread(header, 1, 54, file) != 54) { // If not 54 bytes read : problem
-		printf("Not a correct BMP file\n");
-		return 0;
-	}
-	if (header[0] != 'B' || header[1] != 'M') {
-		printf("Not a correct BMP file\n");
-		return 0;
-	}
-
-	dataPos = *(int*)&(header[0x0A]);
-	imageSize = *(int*)&(header[0x22]);
-	width = *(int*)&(header[0x12]);
-	height = *(int*)&(header[0x16]);
-
-	if (imageSize == 0)    imageSize = width * height * 3; // 3 : one byte for each Red, Green and Blue component
-	if (dataPos == 0)      dataPos = 54;
-
-	data = new unsigned char[imageSize];
-
-	// Read the actual data from the file into the buffer
-	fread(data, 1, imageSize, file);
-
-	//Everything is in memory now, the file can be closed
-	fclose(file);
-
-	GLuint textureID;
-	glGenTextures(1, &textureID);
-
-	// "Bind" the newly created texture : all future texture functions will modify this texture
-	glBindTexture(GL_TEXTURE_2D, textureID);
-
-	// Give the image to OpenGL
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
-
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-
-	return textureID;
-}
-
-
-// LoadBitmapFile
-// opis: ≥aduje mapÍ bitowπ z pliku i zwraca jej adres.
-//       Wype≥nia strukturÍ nag≥Ûwka.
-//	 Nie obs≥uguje map 8-bitowych.
-unsigned char *LoadBitmapFile(char *filename, BITMAPINFOHEADER *bitmapInfoHeader)
-{
-	FILE *filePtr;							// wskaünik pozycji pliku
-	BITMAPFILEHEADER	bitmapFileHeader;		// nag≥Ûwek pliku
-	unsigned char		*bitmapImage;			// dane obrazu
-	int					imageIdx = 0;		// licznik pikseli
-	unsigned char		tempRGB;				// zmienna zamiany sk≥adowych
-
-	// otwiera plik w trybie "read binary"
-	filePtr = fopen(filename, "rb");
-	if (filePtr == NULL)
-		return NULL;
-
-	// wczytuje nag≥Ûwek pliku
-	fread(&bitmapFileHeader, sizeof(BITMAPFILEHEADER), 1, filePtr);
-
-	// sprawdza, czy jest to plik formatu BMP
-	if (bitmapFileHeader.bfType != BITMAP_ID)
-	{
-		fclose(filePtr);
-		return NULL;
-	}
-
-	// wczytuje nag≥Ûwek obrazu
-	fread(bitmapInfoHeader, sizeof(BITMAPINFOHEADER), 1, filePtr);
-
-	// ustawia wskaünik pozycji pliku na poczπtku danych obrazu
-	fseek(filePtr, bitmapFileHeader.bfOffBits, SEEK_SET);
-
-	// przydziela pamiÍÊ buforowi obrazu
-	bitmapImage = (unsigned char*)malloc(bitmapInfoHeader->biSizeImage);
-
-	// sprawdza, czy uda≥o siÍ przydzieliÊ pamiÍÊ
-	if (!bitmapImage)
-	{
-		free(bitmapImage);
-		fclose(filePtr);
-		return NULL;
-	}
-
-	// wczytuje dane obrazu
-	fread(bitmapImage, 1, bitmapInfoHeader->biSizeImage, filePtr);
-
-	// sprawdza, czy dane zosta≥y wczytane
-	if (bitmapImage == NULL)
-	{
-		fclose(filePtr);
-		return NULL;
-	}
-
-	// zamienia miejscami sk≥adowe R i B 
-	for (imageIdx = 0; imageIdx < bitmapInfoHeader->biSizeImage; imageIdx += 3)
-	{
-		tempRGB = bitmapImage[imageIdx];
-		bitmapImage[imageIdx] = bitmapImage[imageIdx + 2];
-		bitmapImage[imageIdx + 2] = tempRGB;
-	}
-
-	// zamyka plik i zwraca wskaünik bufora zawierajπcego wczytany obraz
-	fclose(filePtr);
-	return bitmapImage;
-}
 float kat = 0.0f;
-
-void szescian(void)
-{
-	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-	{
-		// Parametry wierzcholkow
-
-		GLfloat sa[3] = { 0.0f,0.0f,0.0f };
-		GLfloat sb[3] = { 10.0f,0.0f,0.0f };
-		GLfloat sc[3] = { 10.0f,10.0f,0.0f };
-		GLfloat sd[3] = { 0.0f,10.0f,0.0f };
-		GLfloat se[3] = { 0.0f,0.0f,-10.0f };
-		GLfloat sf[3] = { 10.0f,0.0f,-10.0f };
-		GLfloat sg[3] = { 10.0f,10.0f,-10.0f };
-		GLfloat sh[3] = { 0.0f,10.0f,-10.0f };
-
-		GLfloat ma[3] = { 0.0f, 0.0f, 0.0f };
-		GLfloat mb[3] = { 10.0f * cos(kat), 0.0f, 10.0f*sin(kat) };
-		GLfloat mc[3] = { 10.0f * cos(kat), 10.0f, 10.0f*sin(kat) };
-		GLfloat md[3] = { 0.0f, 10.0f, 0.0f };
-
-		GLfloat ta[3] = { 0.0f,0.0f,0.0f };
-		GLfloat tb[3] = { 0.0f,10.0f,0.0f };
-		GLfloat tc[3] = { 2.0f,0.0f,0.0f };
-		GLfloat td[3] = { 2.0f,10.0f,0.0f };
-		GLfloat te[3] = { 4.0f,0.0f,0.0f };
-		GLfloat tf[3] = { 4.0f,10.0f,0.0f };
-		GLfloat tg[3] = { 6.0f,0.0f,0.0f };
-		GLfloat th[3] = { 6.0f,10.0f,0.0f };
-		GLfloat ti[3] = { 8.0f,0.0f,0.0f };
-		GLfloat tj[3] = { 8.0f,10.0f,0.0f };
-		GLfloat tk[3] = { 10.0f,0.0f,0.0f };
-		GLfloat tl[3] = { 10.0f,10.0f,0.0f };
-
-		// Sciany skladowe
-		/*glColor3f(1.0f, 0.0f, 0.0f);
-		glBegin(GL_TRIANGLE_STRIP);
-		
-		glColor3f(1.0f, 0.0f, 0.0f);
-		glVertex3fv(ta);
-		glVertex3fv(tb);
-		glVertex3fv(tc);
-		glColor3f(1.0f, 0.0f, 0.0f);
-		glVertex3fv(td);
-		glColor3f(0.9f, 0.0f, 0.0f);
-		glVertex3fv(te);
-		glColor3f(0.8f, 0.0f, 0.0f);
-		glVertex3fv(tf);
-		glColor3f(0.7f, 0.0f, 0.0f);
-		glVertex3fv(tg);
-		glColor3f(0.6f, 0.0f, 0.0f);
-		glVertex3fv(th);
-		glColor3f(0.5f, 0.0f, 0.0f);
-		glVertex3fv(ti);
-		glColor3f(0.4f, 0.0f, 0.0f);
-		glVertex3fv(tj);
-		glColor3f(0.3f, 0.0f, 0.0f);
-		glVertex3fv(tk);
-		glColor3f(0.2f, 0.0f, 0.0f);
-		glVertex3fv(tl);
-
-
-		glEnd();*/
-
-		/*glBegin(GL_TRIANGLE_STRIP);
-		float c = 1.05f;
-		float y = 10.0f;
-		glColor3f(c, 0.0f, 0.0f);
-		for (float i = 0.0f; i < 20.0f; i += 0.1) {
-			if (y == 10.0f) y = 0.0f;
-			else y = 10.0f;
-			c -= 0.005f;
-			glColor3f(c, 0.0f, 0.0f);
-			glVertex3f(i, y, 0.0f);
-		}
-
-		glEnd();*/
-
-		float c = 1.0f;
-		glColor3f(c, 0.f, 0.35f);
-		glBegin(GL_TRIANGLE_STRIP);
-		//glVertex3f(20.0f, 0.0f, 0.0f);
-		float z, x;
-		float temp = 40.0f;
-		for (float pi = 0.f; pi <= 2*GL_PI; pi += 0.01f) {
-			if (temp == 40.0f) {
-				temp = 0.0f;
-			}
-			else {
-				temp = 40.0f;
-			}
-			z = 20 * cos(pi);
-			x = 20 * sin(pi);
-			glVertex3f(x, temp, z);
-			c -= 0.00318/2.0f;
-			glColor3f(c, 0.f, 0.35f);
-		}
-		glEnd();
-	}
-}
-
-void rysCeg(float x, float y, float z) {
-
-	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-	{
-
-		GLfloat sa[3] = { x, y, z };
-		GLfloat sb[3] = { x + 24.0f, y, z };
-		GLfloat sc[3] = { x, y + 12.0f, z };
-		GLfloat sd[3] = { x + 24.0f, y + 12.0f, z };
-		GLfloat se[3] = { x, y, z + 6.0f };
-		GLfloat sf[3] = { x + 24.0f, y, z + 6.0f };
-		GLfloat sg[3] = { x, y + 12.0f, z + 6.0f };
-		GLfloat sh[3] = { x + 24.0f, y + 12.0f, z + 6.0f };
-
-		glColor3f(0.9, 0, 0);
-		glBegin(GL_TRIANGLE_STRIP);
-		glVertex3fv(sa);
-		glVertex3fv(sb);
-		glVertex3fv(sc);
-		glVertex3fv(sd);
-		glEnd();
-
-		glColor3f(1, 0, 0);
-		glBegin(GL_TRIANGLE_STRIP);
-		glVertex3fv(sc);
-		glVertex3fv(sd);
-		glVertex3fv(sg);
-		glVertex3fv(sh);
-		glEnd();
-		//--------------------
-		glColor3f(0.9, 0, 0);
-		glBegin(GL_TRIANGLE_STRIP);
-		glVertex3fv(sg);
-		glVertex3fv(sh);
-		glVertex3fv(se);
-		glVertex3fv(sf);
-		glEnd();
-
-		glBegin(GL_TRIANGLE_STRIP);
-		glColor3f(1, 0, 0);
-		glVertex3fv(se);
-		glVertex3fv(sf);
-		glVertex3fv(sa);
-		glVertex3fv(sb);
-		glEnd();
-
-		glBegin(GL_TRIANGLE_STRIP);
-		glColor3f(0.8, 0, 0);
-		glVertex3fv(sa);
-		glVertex3fv(sc);
-		glVertex3fv(se);
-		glVertex3fv(sg);
-		glEnd();
-
-		glBegin(GL_TRIANGLE_STRIP);
-		glColor3f(0.8, 0, 0);
-		glVertex3fv(sb);
-		glVertex3fv(sd);
-		glVertex3fv(sf);
-		glVertex3fv(sh);
-		glEnd();
-	}
-}
-
-void rys(int iloscCegiel, int iloscWarstw) {
-
-	//obliczenie szerokoúci ca≥ego muru
-	float szerokosc = (iloscCegiel + 1) * 24.0f + iloscCegiel;
-
-	//jedna iteracja tej pÍtli rysuje jednπ warstwÍ
-	for (int i = 0; i < iloscWarstw; i++) {
-		if (i % 2 == 0) {
-			//rysuje "iloscCegiel + 1" cegie≥ zaczynajπc od poczπtku
-			for (int j = 0; j < (iloscCegiel + 1); j++) {
-				rysCeg(-szerokosc / 2 + j * 25, 0, i * 7);
-			}
-		}
-		else {
-			//rysuje "iloscCegiel" cegie≥ zaczynajπc od poczπtku + 50% d≥ugoúci ceg≥y
-			for (int j = 0; j < (iloscCegiel); j++) {
-				rysCeg(-szerokosc / 2 + j * 25 + 12, 0, i * 7);
-			}
-		}
-	}
-}
-
-void most(void)
-{
-	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-	{
-		// Parametry wierzcholkow
-
-		GLfloat sa[3] = { 0.0f,0.0f,40.0f };
-		GLfloat sb[3] = { 80.0f,0.0f,40.0f };
-		GLfloat sc[3] = { 0.0f,40.0f,40.0f };
-		GLfloat sd[3] = { 80.0f,40.0f,40.0f };
-		GLfloat se[3] = { 80.0f, 0.0f, 0.0f };
-		GLfloat sf[3] = { 80.0f, 40.0f, 0.0f };
-		GLfloat sg[3] = { 60.0f, 0.0f, 0.0f };
-		GLfloat sh[3] = { 60.0f, 40.0f, 0.0f };
-		GLfloat si[3] = { 60.0f, 0.0f, 20.0f };
-		GLfloat sj[3] = { 60.0f, 40.0f, 20.0f };
-		GLfloat sk[3] = { 20.0f, 0.0f, 20.0f };
-		GLfloat sl[3] = { 20.0f, 40.0f, 20.0f };
-		GLfloat sm[3] = { 20.0f, 0.0f, 0.0f };
-		GLfloat sn[3] = { 20.0f, 40.0f, 0.0f };
-		GLfloat so[3] = { 0.0f, 0.0f, 0.0f };
-		GLfloat sp[3] = { 0.0f, 40.0f, 0.0f };
-
-		// Sciana boczna
-		glColor3f(0.5f, 0.5f, 0.5f);
-		glBegin(GL_TRIANGLE_STRIP);
-		glVertex3fv(sa);
-		glVertex3fv(sc);
-		glVertex3fv(sb);
-		glVertex3fv(sd);
-		glColor3f(0.45f, 0.45f, 0.45f);
-		glVertex3fv(se);
-		glVertex3fv(sf);
-		glVertex3fv(sg);
-		glVertex3fv(sh);
-		glEnd();
-
-		glColor3f(0.45f, 0.45f, 0.45f);
-		glBegin(GL_TRIANGLE_STRIP);
-		glVertex3fv(sm);
-		glVertex3fv(sn);
-		glVertex3fv(so);
-		glVertex3fv(sp);
-		glVertex3fv(sa);
-		glVertex3fv(sc);
-		glEnd();
-
-		// åciana z przodu bez ≥ukÛw
-		glColor3f(0.4f, 0.4f, 0.4f);
-		glBegin(GL_TRIANGLE_STRIP);
-		glVertex3fv(so);
-		glVertex3fv(sm);
-		glVertex3fv(sa);
-		glVertex3fv(sk);
-		glVertex3fv(sb);
-		glVertex3fv(si);
-		glVertex3fv(se);
-		glVertex3fv(sg);
-		glEnd();
-
-		// åciana z ty≥u bez ≥ukÛw
-		glBegin(GL_TRIANGLE_STRIP);
-		glVertex3fv(sp);
-		glVertex3fv(sn);
-		glVertex3fv(sc);
-		glVertex3fv(sl);
-		glVertex3fv(sd);
-		glVertex3fv(sj);
-		glVertex3fv(sf);
-		glVertex3fv(sh);
-		glEnd();
-
-
-		// Prawy przedni ≥uk
-		glBegin(GL_TRIANGLE_FAN);
-		glVertex3f(60.0f, 0.0f, 20.0f);
-		GLfloat temp[3];
-		temp[1] = 0.0f;
-		float z, x;
-		for (float pi = 0.f; pi <= GL_PI / 2.0f; pi += 0.05f) {
-			z = 20 * sin(pi);
-			x = 20 * cos(pi);
-			temp[0] = 40 + x;
-			temp[2] = z;
-			glVertex3fv(temp);
-		}
-		glEnd();
-
-		// Lewy przedni ≥uk
-		glBegin(GL_TRIANGLE_FAN);
-		glVertex3f(20.0f, 0.0f, 20.0f);
-		temp[1] = 0.0f;
-		for (float pi = 0.f; pi <= GL_PI / 2.0f; pi += 0.05f) {
-			z = 20 * sin(pi);
-			x = 20 * cos(pi);
-			temp[0] = 40 - x;
-			temp[2] = z;
-			glVertex3fv(temp);
-		}
-		glEnd();
-
-		//Prawy tylny ≥uk
-		glBegin(GL_TRIANGLE_FAN);
-		glVertex3f(60.0f, 40.0f, 20.0f);
-		temp[1] = 40.0f;
-		for (float pi = 0.f; pi <= GL_PI / 2.0f; pi += 0.05f) {
-			z = 20 * sin(pi);
-			x = 20 * cos(pi);
-			temp[0] = 40 + x;
-			temp[2] = z;
-			glVertex3fv(temp);
-		}
-		glEnd();
-
-		//Lewy tylny ≥uk
-		glBegin(GL_TRIANGLE_FAN);
-		glVertex3f(20.0f, 40.0f, 20.0f);
-		temp[1] = 40.0f;
-		for (float pi = 0.f; pi <= GL_PI / 2.0f; pi += 0.05f) {
-			z = 20 * sin(pi);
-			x = 20 * cos(pi);
-			temp[0] = 40 - x;
-			temp[2] = z;
-			glVertex3fv(temp);
-		}
-		glEnd();
-
-		// Wype≥nienie pomiÍdzy ≥ukami
-		glColor3f(0.35f, 0.35f, 0.35f);
-		glBegin(GL_TRIANGLE_STRIP);
-		glVertex3f(20.0f, 0.0f, 0.0f);
-		temp[1] = 40.0f;
-		for (float pi = 0.f; pi <= GL_PI; pi += 0.01f) {
-			if (temp[1] == 40.0f) {
-				temp[1] = 0.0f;
-			}
-			else {
-				temp[1] = 40.0f;
-			}
-			z = 20 * sin(pi);
-			x = 20 * cos(pi);
-			temp[0] = 40 - x;
-			temp[2] = z;
-			glVertex3fv(temp);
-		}
-		glEnd();
-	}
-}
-
-void mur(void)
-{
-
-	rys(5, 7);
-
-}
-
-void ramie(double r1, double r2, double h, double d)
-{
-	double PI = 3.14, alpha, x, y;
-	glBegin(GL_TRIANGLE_FAN);
-	glColor3d(0.8, 0.0, 0);
-	glVertex3d(0, 0, 0);
-	for (alpha = PI; alpha <= 2 * PI; alpha += PI / 8.0)
-	{
-		x = r1 * sin(alpha);
-		y = r1 * cos(alpha);
-		glVertex3d(x, y, 0);
-	}
-	glEnd();
-
-	glBegin(GL_QUAD_STRIP);
-	for (alpha = 0; alpha >= -PI; alpha -= PI / 8.0)
-	{
-		x = r1 * sin(alpha);
-		y = r1 * cos(alpha);
-		glVertex3d(x, y, h);
-		glVertex3d(x, y, 0);
-	}
-	glEnd();
-
-	glBegin(GL_TRIANGLE_FAN);
-	glVertex3d(0, 0, h);
-	for (alpha = 0; alpha >= -PI; alpha -= PI / 8.0)
-	{
-		x = r1 * sin(alpha);
-		y = r1 * cos(alpha);
-		glVertex3d(x, y, h);
-	}
-	glEnd();
-
-	glBegin(GL_TRIANGLE_FAN);
-	glColor3d(0.8, 0.0, 0);
-	//glVertex3d(d,r2,0);
-	//glVertex3d(d, r2, h);
-	for (alpha = 0; alpha <= PI; alpha += PI / 8.0)
-	{
-		x = d + r2 * sin(alpha);
-		y = d + r2 * cos(alpha);
-		glVertex3d(x, y, 0);
-	}
-	glEnd();
-
-	glBegin(GL_QUAD_STRIP);
-	//glVertex3d(d, r2, 0);
-	for (alpha = 0; alpha <= PI; alpha += PI / 8.0)
-	{
-		x = d + r2 * sin(alpha);
-		y = d + r2 * cos(alpha);
-		glVertex3d(x, y, h);
-		glVertex3d(x, y, 0);
-	}
-	glEnd();
-
-	glBegin(GL_TRIANGLE_FAN);
-	//glVertex3d(d, r2, h);
-	for (alpha = 0; alpha <= PI; alpha += PI / 8.0)
-	{
-		x = d + r2 * sin(alpha);
-		y = d + r2 * cos(alpha);
-		glVertex3d(x, y, h);
-	}
-	glEnd();
-}
-
-Lazik laz(0, 0, 30);
-
-void walec(double r, double h)
-{
-	double x, y, alpha, PI = 3.14;
-	glBegin(GL_TRIANGLE_FAN);
-	glColor3d(0.8, 0.0, 0);
-	glVertex3d(0, 0, 0);
-	for (alpha = 0; alpha <= 2 * PI; alpha += PI / 8.0)
-	{
-		x = r * sin(alpha);
-		y = r * cos(alpha);
-		glVertex3d(x, y, 0);
-	}
-	glEnd();
-
-	glBegin(GL_QUAD_STRIP);
-	for (alpha = 0.0; alpha <= 2 * PI; alpha += PI / 8.0)
-	{
-		x = r * sin(alpha);
-		y = r * cos(alpha);
-		glVertex3d(x, y, 0);
-		glVertex3d(x, y, h);
-	}
-	glEnd();
-
-	glBegin(GL_TRIANGLE_FAN);
-	glVertex3d(0, 0, h);
-	for (alpha = 0; alpha >= -2 * PI; alpha -= PI / 8.0)
-	{
-		x = r * sin(alpha);
-		y = r * cos(alpha);
-		glVertex3d(x, y, h);
-	}
-	glEnd();
-}
 
 // Called to draw scene
 void RenderScene(void)
@@ -977,11 +329,8 @@ void RenderScene(void)
 	/////////////////////////////////////////////////////////////////
 	// MIEJSCE NA KOD OPENGL DO TWORZENIA WLASNYCH SCEN:		   //
 	/////////////////////////////////////////////////////////////////
-	//szescian();
 
-	//SposÛb na odrÛünienie "przedniej" i "tylniej" úciany wielokπta:
 	glPolygonMode(GL_BACK, GL_LINE);
-	//walec(40, 40);
 
 	glPushMatrix();
 	glEnable(GL_TEXTURE_2D);
@@ -1039,41 +388,40 @@ void RenderScene(void)
 	glDisable(GL_TEXTURE_2D);
 	glPopMatrix();
 
-	/*glPushMatrix();
-	glEnable(GL_TEXTURE_2D);
-	glBindTexture(GL_TEXTURE_2D, textures[1]);
-	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-	trunk->draw();
-	glDisable(GL_TEXTURE_2D);
-	glPopMatrix();*/
-
-	//lazik();
 	glPushMatrix();
-
-
 	glTranslatef(chX, -60.0, chZ); // 3. Translate to the object's position.
-
 	glRotatef(startX, 1.0, 0.0, 0.0); // 2. Rotate the object.
 	glRotatef(startZ + doZ, 0.0, 0.0, 1.0); // 2. Rotate the object.
-
-	//glTranslatef(-250, -250, 0.0); // 1. Translate to the origin.
-
-	// Draw the object
 	laz.rysujLazik();
 	glPopMatrix();
-	//Uzyskanie siatki:
-	//glPolygonMode(GL_FRONT_AND_BACK,GL_LINE);
 
-	//Wyrysowanie prostokata:
-	//glRectd(-10.0,-10.0,20.0,20.0);
+	if (gameOn) {
+		glPushMatrix();
+		glRotatef(startX, 1.0, 0.0, 0.0);
+		coin1.rysujWalec();
+		coin2.rysujWalec();
+		coin3.rysujWalec();
+		coin4.rysujWalec();
+		coin5.rysujWalec();
+		glPopMatrix();
+	}
 
-	/////////////////////////////////////////////////////////////////
-	/////////////////////////////////////////////////////////////////
-	/////////////////////////////////////////////////////////////////
-	glPopMatrix();
+	//if (gameOn) {
+	//	for (int i = 0; i < 5; i++) {
+	//		if (coins[i] != NULL) {
+	////			//glPushMatrix();
+	////			//glTranslatef(coinsPositions[i][0], -60.0, coinsPositions[i][2]); // 3. Translate to the object's position.
+	//			(*(coins + i))->rysujWalec();
+	////			//glPopMatrix();
+	//		}
+	//	}
+	//}
+
+	srand(time(NULL));
+
+
+
 	glMatrixMode(GL_MODELVIEW);
-
-	// Flush drawing commands
 	glFlush();
 	if (keys['J']) {
 		doZ += 5;
@@ -1086,25 +434,68 @@ void RenderScene(void)
 	GLdouble odl2 = sqrt(pow(chX - pos3[0], 2) + pow(chZ - pos3[1], 2));
 	GLdouble odl3 = sqrt(pow(chX - pos4[0], 2) + pow(chZ - pos4[1], 2));
 	GLdouble col = 50;
-	if (odl1 > col && odl2 > col && odl3 > col) {
-		if (keys['K']) {
-			//speed += 10;
-			chX += sin((startZ + doZ + 90)*GL_PI / 180) * 5;
-			chZ += cos((startZ + doZ + 90)*GL_PI / 180) * 5;
-		}
+	if (keys['K']) {
+		if (speed < 5)
+			speed += 5;
+	}
 
-		if (keys['I']) {
-			//speed -= 10;	
-			chX -= sin((startZ + doZ + 90)*GL_PI / 180) * 5;
-			chZ -= cos((startZ + doZ + 90)*GL_PI / 180) * 5;
+	if (keys['I']) {
+		if (speed > -30)
+			speed -= 5;
+	}
+
+	GLdouble addX = sin((startZ + doZ + 90)*GL_PI / 180) * speed;
+	GLdouble addZ = cos((startZ + doZ + 90)*GL_PI / 180) * speed;
+
+	if (odl1 >= col && odl2 >= col && odl3 >= col) {	
+		chX += addX;
+		chZ += addZ;
+	}
+	else {
+		speed = -5;
+		GLdouble odl11 = sqrt(pow(chX + addX - pos2[0], 2) + pow(chZ + addZ - pos2[1], 2));
+		GLdouble odl21 = sqrt(pow(chX + addX - pos3[0], 2) + pow(chZ + addZ - pos3[1], 2));
+		GLdouble odl31 = sqrt(pow(chX + addX - pos4[0], 2) + pow(chZ + addZ - pos4[1], 2));
+		if (odl11 >= odl1 && odl21 >= odl2 && odl31 >= odl3) {
+			chX += addX;
+			chZ += addZ;
 		}
 	}
+
+	if (keys['B']) {
+		//if (!gameOn) {
+			gameOn = true;
+			chX = 0;
+			chZ = 0;
+			speed = 0;
+
+			coinsPositions1[0] = (rand() % 2000) - 1000;
+			coinsPositions1[1] = (rand() % 2000) - 1000;
+			
+			coinsPositions2[0] = (rand() % 2000) - 1000;
+			coinsPositions2[1] = (rand() % 2000) - 1000;
+
+			coinsPositions3[0] = (rand() % 2000) - 1000;
+			coinsPositions3[1] = (rand() % 2000) - 1000;
+
+			coinsPositions4[0] = (rand() % 2000) - 1000;
+			coinsPositions4[1] = (rand() % 2000) - 1000;
+
+			coinsPositions5[0] = (rand() % 2000) - 1000;
+			coinsPositions5[1] = (rand() % 2000) - 1000;
+
+			coin1.ustawPozycje(coinsPositions1[0], coinsPositions1[1], coinsPositions1[2]);
+			coin2.ustawPozycje(coinsPositions2[0], coinsPositions2[1], coinsPositions2[2]);
+			coin3.ustawPozycje(coinsPositions3[0], coinsPositions3[1], coinsPositions3[2]);
+			coin4.ustawPozycje(coinsPositions4[0], coinsPositions4[1], coinsPositions4[2]);
+			coin5.ustawPozycje(coinsPositions5[0], coinsPositions5[1], coinsPositions5[2]);
+		//}
+	}
+
+	speed2 = -speed;
+	TwDraw();
 }
 
-//void timer(int) {
-//	RenderScene();
-//	glutTimerFunc(1000.0 / 60.0, timer, 0);
-//}
 
 // Select the pixel format for a given device context
 void SetDCPixelFormat(HDC hDC)
@@ -1210,6 +601,11 @@ HPALETTE GetOpenGLPalette(HDC hDC)
 	return hRetPal;
 }
 
+void timer(int) {
+	glutPostRedisplay();
+	//RenderScene();
+	glutTimerFunc(1000 / 60, timer, 0);
+}
 
 // Entry point of all Windows programs
 int APIENTRY WinMain(HINSTANCE       hInst,
@@ -1263,10 +659,22 @@ int APIENTRY WinMain(HINSTANCE       hInst,
 	if (hWnd == NULL)
 		return FALSE;
 
+	//coins[0] = &Coin(20, -60, 20, 20, 30, "zolty");
+
+	//inicjalizacja anttweakbara
+	TwInit(TW_OPENGL, NULL);
+	TwWindowSize(200,200);
+	TwBar *myBar;
+	myBar = TwNewBar("Parameters");
+	TwAddVarRW(myBar, "X", TW_TYPE_DOUBLE, &chX, "");
+	TwAddVarRW(myBar, "Y", TW_TYPE_DOUBLE, &chZ, "");
+	TwAddVarRW(myBar, "Speed", TW_TYPE_DOUBLE, &speed2, "");
 
 	// Display the window
 	ShowWindow(hWnd, SW_SHOW);
 	UpdateWindow(hWnd);
+
+
 
 	// Process application messages until the application closes
 	while (GetMessage(&msg, NULL, 0, 0))
@@ -1294,6 +702,15 @@ LRESULT CALLBACK WndProc(HWND    hWnd,
 	switch (message)
 	{
 		// Window creation, setup for OpenGL
+
+	case WM_TIMER:
+		RenderScene();
+
+		SwapBuffers(hDC);
+
+		// Validate the newly painted client area
+		ValidateRect(hWnd, NULL);
+		break;
 	case WM_CREATE:
 		// Store the device context
 		hDC = GetDC(hWnd);
@@ -1313,7 +730,7 @@ LRESULT CALLBACK WndProc(HWND    hWnd,
 		textures[0] = LoadTexture("grass.png", 1);
 		textures[1] = LoadTexture("grass.png", 1);
 
-
+		
 
 		// ≥aduje pierwszy obraz tekstury:
 		//bitmapData = LoadBitmapFile("Bitmapy\\checker.bmp", &bitmapInfoHeader);
@@ -1453,28 +870,14 @@ LRESULT CALLBACK WndProc(HWND    hWnd,
 		if (wParam == 'I') {
 			keys['I'] = false;
 		}
+		if (wParam == 'B') {
+			keys['B'] = false;
+		}
 	}
 	break;
 	case WM_KEYDOWN:
 	{
-		/*if (wParam == VK_UP)
-			xRot -= 5.0f;
-
-		if (wParam == VK_DOWN)
-			xRot += 5.0f;
-
-		if (wParam == VK_LEFT)
-			yRot -= 5.0f;
-
-		if (wParam == VK_RIGHT)
-			yRot += 5.0f;
-
-		xRot = (const int)xRot % 360;
-		yRot = (const int)yRot % 360;
-
-		InvalidateRect(hWnd, NULL, FALSE);*/
-
-		//TODO renderowanie cykliczne, antweakbar, fabu≥a z pieniπøkami i pomiarem czase, moøliwoúÊ kilku graczy
+		//TODO fabu≥a z pieniπøkami i pomiarem czase, moøliwoúÊ kilku graczy
 
 		camera->update(wParam);
 
@@ -1482,7 +885,7 @@ LRESULT CALLBACK WndProc(HWND    hWnd,
 		yRot = (const int)yRot % 360;
 		zRot = (const int)zRot % 360;
 
-		InvalidateRect(hWnd, NULL, FALSE);
+		//InvalidateRect(hWnd, NULL, FALSE);
 
 		if (wParam == 'J') {
 			keys['J'] = true;
@@ -1498,6 +901,9 @@ LRESULT CALLBACK WndProc(HWND    hWnd,
 
 		if (wParam == 'I') {
 			keys['I'] = true;
+		}
+		if (wParam == 'B') {
+			keys['B'] = true;
 		}
 	}
 	break;
@@ -1545,27 +951,6 @@ BOOL APIENTRY AboutDlgProc(HWND hDlg, UINT message, UINT wParam, LONG lParam)
 	{
 		int i;
 		GLenum glError;
-
-		// glGetString demo
-		//SetDlgItemText(hDlg, IDC_OPENGL_VENDOR, glGetString(GL_VENDOR));
-		//SetDlgItemText(hDlg, IDC_OPENGL_RENDERER, glGetString(GL_RENDERER));
-		//SetDlgItemText(hDlg, IDC_OPENGL_VERSION, glGetString(GL_VERSION));
-		//SetDlgItemText(hDlg, IDC_OPENGL_EXTENSIONS, glGetString(GL_EXTENSIONS));
-
-		//// gluGetString demo
-		//SetDlgItemText(hDlg, IDC_GLU_VERSION, gluGetString(GLU_VERSION));
-		//SetDlgItemText(hDlg, IDC_GLU_EXTENSIONS, gluGetString(GLU_EXTENSIONS));
-
-
-		//// Display any recent error messages
-		//i = 0;
-		//do {
-		//	glError = glGetError();
-		//	SetDlgItemText(hDlg, IDC_ERROR1 + i, gluErrorString(glError));
-			//i++;
-		//} while (i < 6 && glError != GL_NO_ERROR);
-
-
 		return (TRUE);
 	}
 	break;

@@ -1,0 +1,209 @@
+﻿  Camera.cpp
+c:\users\root\source\repos\xd\xd\camera.h(18): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\root\source\repos\xd\xd\camera.h(23): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\root\source\repos\xd\xd\camera.cpp(23): warning C4244: '+=': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\root\source\repos\xd\xd\camera.cpp(24): warning C4244: '+=': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\root\source\repos\xd\xd\camera.cpp(25): warning C4244: '+=': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\root\source\repos\xd\xd\camera.cpp(29): warning C4244: '-=': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\root\source\repos\xd\xd\camera.cpp(30): warning C4244: '-=': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\root\source\repos\xd\xd\camera.cpp(31): warning C4244: '-=': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\root\source\repos\xd\xd\camera.cpp(37): warning C4305: '=': truncation from 'double' to 'float'
+c:\users\root\source\repos\xd\xd\camera.cpp(38): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\root\source\repos\xd\xd\camera.cpp(39): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\root\source\repos\xd\xd\camera.cpp(40): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\root\source\repos\xd\xd\camera.cpp(46): warning C4305: '=': truncation from 'double' to 'float'
+c:\users\root\source\repos\xd\xd\camera.cpp(47): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\root\source\repos\xd\xd\camera.cpp(48): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\root\source\repos\xd\xd\camera.cpp(49): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\root\source\repos\xd\xd\camera.cpp(53): warning C4244: '+=': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\root\source\repos\xd\xd\camera.cpp(54): warning C4244: '+=': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\root\source\repos\xd\xd\camera.cpp(58): warning C4244: '+=': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\root\source\repos\xd\xd\camera.cpp(59): warning C4244: '+=': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\root\source\repos\xd\xd\camera.cpp(64): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\root\source\repos\xd\xd\camera.cpp(65): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\root\source\repos\xd\xd\camera.cpp(66): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\root\source\repos\xd\xd\camera.cpp(67): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\root\source\repos\xd\xd\camera.cpp(72): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\root\source\repos\xd\xd\camera.cpp(73): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\root\source\repos\xd\xd\camera.cpp(74): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+  grid.cpp
+  Lazik.cpp
+c:\users\root\source\repos\xd\xd\prostopadloscian.h(33): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
+c:\users\root\source\repos\xd\xd\lazik.cpp(7): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\root\source\repos\xd\xd\lazik.cpp(8): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\root\source\repos\xd\xd\lazik.cpp(9): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\root\source\repos\xd\xd\lazik.cpp(10): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\root\source\repos\xd\xd\lazik.cpp(11): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\root\source\repos\xd\xd\lazik.cpp(12): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\root\source\repos\xd\xd\lazik.cpp(13): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\root\source\repos\xd\xd\lazik.cpp(14): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\root\source\repos\xd\xd\lazik.cpp(15): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\root\source\repos\xd\xd\lazik.cpp(16): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\root\source\repos\xd\xd\lazik.cpp(17): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\root\source\repos\xd\xd\lazik.cpp(18): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\root\source\repos\xd\xd\lazik.cpp(25): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+  main.cpp
+c:\users\root\source\repos\xd\xd\prostopadloscian.h(33): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
+c:\users\root\source\repos\xd\xd\podloze.h(31): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
+c:\users\root\source\repos\xd\xd\camera.h(18): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\root\source\repos\xd\xd\camera.h(23): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\root\source\repos\xd\xd\obj_loader.h(950): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\root\source\repos\xd\xd\main.cpp(110): error C2664: 'UINT_PTR SetTimer(HWND,UINT_PTR,UINT,TIMERPROC)': cannot convert argument 4 from 'void (__cdecl *)(HWND,UINT,UINT,DWORD)' to 'TIMERPROC'
+  c:\users\root\source\repos\xd\xd\main.cpp(110): note: This conversion requires a reinterpret_cast, a C-style cast or function-style cast
+c:\users\root\source\repos\xd\xd\main.cpp(139): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
+c:\users\root\source\repos\xd\xd\main.cpp(140): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
+c:\users\root\source\repos\xd\xd\main.cpp(373): warning C4244: 'argument': conversion from 'GLdouble' to 'GLfloat', possible loss of data
+c:\users\root\source\repos\xd\xd\main.cpp(374): warning C4244: 'argument': conversion from 'GLdouble' to 'GLfloat', possible loss of data
+c:\users\root\source\repos\xd\xd\main.cpp(375): warning C4244: 'argument': conversion from 'GLdouble' to 'GLfloat', possible loss of data
+c:\users\root\source\repos\xd\xd\main.cpp(584): warning C4244: 'return': conversion from 'WPARAM' to 'int', possible loss of data
+c:\users\root\source\repos\xd\xd\main.cpp(779): warning C4244: '=': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\root\source\repos\xd\xd\main.cpp(780): warning C4244: '=': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\root\source\repos\xd\xd\main.cpp(781): warning C4244: '=': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\root\source\repos\xd\xd\main.cpp(815): error C2664: 'INT_PTR DialogBoxParamA(HINSTANCE,LPCSTR,HWND,DLGPROC,LPARAM)': cannot convert argument 4 from 'BOOL (__cdecl *)(HWND,UINT,UINT,LONG)' to 'DLGPROC'
+  c:\users\root\source\repos\xd\xd\main.cpp(818): note: None of the functions with this name in scope match the target type
+  object.cpp
+c:\users\root\source\repos\xd\xd\obj_loader.h(950): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+  Podloze.cpp
+c:\users\root\source\repos\xd\xd\podloze.h(31): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
+c:\users\root\source\repos\xd\xd\podloze.cpp(29): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
+c:\users\root\source\repos\xd\xd\podloze.cpp(29): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\root\source\repos\xd\xd\podloze.cpp(31): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
+c:\users\root\source\repos\xd\xd\podloze.cpp(31): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\root\source\repos\xd\xd\podloze.cpp(32): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
+c:\users\root\source\repos\xd\xd\podloze.cpp(32): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\root\source\repos\xd\xd\podloze.cpp(33): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
+c:\users\root\source\repos\xd\xd\podloze.cpp(33): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\root\source\repos\xd\xd\podloze.cpp(34): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
+c:\users\root\source\repos\xd\xd\podloze.cpp(34): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\root\source\repos\xd\xd\podloze.cpp(35): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
+c:\users\root\source\repos\xd\xd\podloze.cpp(35): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\root\source\repos\xd\xd\podloze.cpp(36): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
+c:\users\root\source\repos\xd\xd\podloze.cpp(36): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\root\source\repos\xd\xd\podloze.cpp(37): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
+c:\users\root\source\repos\xd\xd\podloze.cpp(37): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\root\source\repos\xd\xd\podloze.cpp(38): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
+c:\users\root\source\repos\xd\xd\podloze.cpp(38): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\root\source\repos\xd\xd\podloze.cpp(39): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
+c:\users\root\source\repos\xd\xd\podloze.cpp(39): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\root\source\repos\xd\xd\podloze.cpp(40): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
+c:\users\root\source\repos\xd\xd\podloze.cpp(40): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\root\source\repos\xd\xd\podloze.cpp(42): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
+c:\users\root\source\repos\xd\xd\podloze.cpp(42): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\root\source\repos\xd\xd\podloze.cpp(43): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
+c:\users\root\source\repos\xd\xd\podloze.cpp(43): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\root\source\repos\xd\xd\podloze.cpp(44): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
+c:\users\root\source\repos\xd\xd\podloze.cpp(44): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\root\source\repos\xd\xd\podloze.cpp(45): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
+c:\users\root\source\repos\xd\xd\podloze.cpp(45): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\root\source\repos\xd\xd\podloze.cpp(46): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
+c:\users\root\source\repos\xd\xd\podloze.cpp(46): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\root\source\repos\xd\xd\podloze.cpp(47): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
+c:\users\root\source\repos\xd\xd\podloze.cpp(47): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\root\source\repos\xd\xd\podloze.cpp(48): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
+c:\users\root\source\repos\xd\xd\podloze.cpp(48): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\root\source\repos\xd\xd\podloze.cpp(49): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
+c:\users\root\source\repos\xd\xd\podloze.cpp(49): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\root\source\repos\xd\xd\podloze.cpp(50): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
+c:\users\root\source\repos\xd\xd\podloze.cpp(50): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+  Prostopadloscian.cpp
+c:\users\root\source\repos\xd\xd\prostopadloscian.h(33): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
+c:\users\root\source\repos\xd\xd\prostopadloscian.cpp(26): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
+c:\users\root\source\repos\xd\xd\prostopadloscian.cpp(26): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\root\source\repos\xd\xd\prostopadloscian.cpp(28): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
+c:\users\root\source\repos\xd\xd\prostopadloscian.cpp(28): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\root\source\repos\xd\xd\prostopadloscian.cpp(29): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
+c:\users\root\source\repos\xd\xd\prostopadloscian.cpp(29): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\root\source\repos\xd\xd\prostopadloscian.cpp(30): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
+c:\users\root\source\repos\xd\xd\prostopadloscian.cpp(30): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\root\source\repos\xd\xd\prostopadloscian.cpp(31): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
+c:\users\root\source\repos\xd\xd\prostopadloscian.cpp(31): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\root\source\repos\xd\xd\prostopadloscian.cpp(32): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
+c:\users\root\source\repos\xd\xd\prostopadloscian.cpp(32): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\root\source\repos\xd\xd\prostopadloscian.cpp(33): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
+c:\users\root\source\repos\xd\xd\prostopadloscian.cpp(33): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\root\source\repos\xd\xd\prostopadloscian.cpp(34): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
+c:\users\root\source\repos\xd\xd\prostopadloscian.cpp(34): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\root\source\repos\xd\xd\prostopadloscian.cpp(35): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
+c:\users\root\source\repos\xd\xd\prostopadloscian.cpp(35): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\root\source\repos\xd\xd\prostopadloscian.cpp(36): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
+c:\users\root\source\repos\xd\xd\prostopadloscian.cpp(36): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\root\source\repos\xd\xd\prostopadloscian.cpp(65): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
+c:\users\root\source\repos\xd\xd\prostopadloscian.cpp(65): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\root\source\repos\xd\xd\prostopadloscian.cpp(67): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
+c:\users\root\source\repos\xd\xd\prostopadloscian.cpp(67): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\root\source\repos\xd\xd\prostopadloscian.cpp(68): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
+c:\users\root\source\repos\xd\xd\prostopadloscian.cpp(68): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\root\source\repos\xd\xd\prostopadloscian.cpp(69): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
+c:\users\root\source\repos\xd\xd\prostopadloscian.cpp(69): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\root\source\repos\xd\xd\prostopadloscian.cpp(70): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
+c:\users\root\source\repos\xd\xd\prostopadloscian.cpp(70): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\root\source\repos\xd\xd\prostopadloscian.cpp(71): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
+c:\users\root\source\repos\xd\xd\prostopadloscian.cpp(71): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\root\source\repos\xd\xd\prostopadloscian.cpp(72): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
+c:\users\root\source\repos\xd\xd\prostopadloscian.cpp(72): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\root\source\repos\xd\xd\prostopadloscian.cpp(73): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
+c:\users\root\source\repos\xd\xd\prostopadloscian.cpp(73): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\root\source\repos\xd\xd\prostopadloscian.cpp(74): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
+c:\users\root\source\repos\xd\xd\prostopadloscian.cpp(74): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\root\source\repos\xd\xd\prostopadloscian.cpp(75): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
+c:\users\root\source\repos\xd\xd\prostopadloscian.cpp(75): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\root\source\repos\xd\xd\prostopadloscian.cpp(119): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
+c:\users\root\source\repos\xd\xd\prostopadloscian.cpp(119): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\root\source\repos\xd\xd\prostopadloscian.cpp(120): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
+c:\users\root\source\repos\xd\xd\prostopadloscian.cpp(120): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\root\source\repos\xd\xd\prostopadloscian.cpp(121): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
+c:\users\root\source\repos\xd\xd\prostopadloscian.cpp(121): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\root\source\repos\xd\xd\prostopadloscian.cpp(122): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
+c:\users\root\source\repos\xd\xd\prostopadloscian.cpp(122): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\root\source\repos\xd\xd\prostopadloscian.cpp(123): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
+c:\users\root\source\repos\xd\xd\prostopadloscian.cpp(123): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\root\source\repos\xd\xd\prostopadloscian.cpp(124): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
+c:\users\root\source\repos\xd\xd\prostopadloscian.cpp(124): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\root\source\repos\xd\xd\prostopadloscian.cpp(125): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
+c:\users\root\source\repos\xd\xd\prostopadloscian.cpp(125): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\root\source\repos\xd\xd\prostopadloscian.cpp(126): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
+c:\users\root\source\repos\xd\xd\prostopadloscian.cpp(126): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\root\source\repos\xd\xd\prostopadloscian.cpp(127): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
+c:\users\root\source\repos\xd\xd\prostopadloscian.cpp(127): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\root\source\repos\xd\xd\prostopadloscian.cpp(128): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
+c:\users\root\source\repos\xd\xd\prostopadloscian.cpp(128): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\root\source\repos\xd\xd\prostopadloscian.cpp(131): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
+c:\users\root\source\repos\xd\xd\prostopadloscian.cpp(131): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\root\source\repos\xd\xd\prostopadloscian.cpp(132): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
+c:\users\root\source\repos\xd\xd\prostopadloscian.cpp(132): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\root\source\repos\xd\xd\prostopadloscian.cpp(133): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
+c:\users\root\source\repos\xd\xd\prostopadloscian.cpp(133): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\root\source\repos\xd\xd\prostopadloscian.cpp(134): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
+c:\users\root\source\repos\xd\xd\prostopadloscian.cpp(134): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\root\source\repos\xd\xd\prostopadloscian.cpp(135): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
+c:\users\root\source\repos\xd\xd\prostopadloscian.cpp(135): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\root\source\repos\xd\xd\prostopadloscian.cpp(136): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
+c:\users\root\source\repos\xd\xd\prostopadloscian.cpp(136): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\root\source\repos\xd\xd\prostopadloscian.cpp(137): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
+c:\users\root\source\repos\xd\xd\prostopadloscian.cpp(137): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\root\source\repos\xd\xd\prostopadloscian.cpp(138): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
+c:\users\root\source\repos\xd\xd\prostopadloscian.cpp(138): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\root\source\repos\xd\xd\prostopadloscian.cpp(139): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
+c:\users\root\source\repos\xd\xd\prostopadloscian.cpp(139): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\root\source\repos\xd\xd\prostopadloscian.cpp(140): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
+c:\users\root\source\repos\xd\xd\prostopadloscian.cpp(140): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+  Walec.cpp
+c:\users\root\source\repos\xd\xd\walec.cpp(23): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
+c:\users\root\source\repos\xd\xd\walec.cpp(23): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\root\source\repos\xd\xd\walec.cpp(25): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\root\source\repos\xd\xd\walec.cpp(27): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+c:\users\root\source\repos\xd\xd\walec.cpp(31): warning C4305: '+=': truncation from 'double' to 'float'
+c:\users\root\source\repos\xd\xd\walec.cpp(32): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\root\source\repos\xd\xd\walec.cpp(33): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\root\source\repos\xd\xd\walec.cpp(38): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
+c:\users\root\source\repos\xd\xd\walec.cpp(38): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\root\source\repos\xd\xd\walec.cpp(40): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\root\source\repos\xd\xd\walec.cpp(46): warning C4305: '+=': truncation from 'double' to 'float'
+c:\users\root\source\repos\xd\xd\walec.cpp(47): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\root\source\repos\xd\xd\walec.cpp(48): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\root\source\repos\xd\xd\walec.cpp(54): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
+c:\users\root\source\repos\xd\xd\walec.cpp(54): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\root\source\repos\xd\xd\walec.cpp(58): warning C4305: '+=': truncation from 'double' to 'float'
+c:\users\root\source\repos\xd\xd\walec.cpp(60): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\root\source\repos\xd\xd\walec.cpp(66): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\root\source\repos\xd\xd\walec.cpp(67): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data

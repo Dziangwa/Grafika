@@ -8,12 +8,15 @@
 class Walec
 {
 public:
-	Walec(float x, float y, float z, double wysokosc, double promien);
+	Walec();
+	Walec(float x, float y, float z, double wysokosc, double promien, const char* color);
 	~Walec();
 
 	GLfloat pos[3];
 	double wysokoscWalca;
 	double promienWalca;
+	double x, y, z;
+	const char* color;
 	//s
 	void rysujWalec();
 	void ustawPozycje(float x, float y, float z);
