@@ -76,7 +76,6 @@
 #include "Camera.h"
 #include "OBJ_Loader.h"
 #include "object.h"
-#include "freeglut/include/GL/freeglut.h"
 #include "AntTweakBar.h"
 #include "Coin.h"
 #include <ctime>

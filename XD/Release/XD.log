@@ -1,38 +1,179 @@
-﻿  main.cpp
-c:\users\root\source\repos\xd\xd\prostopadloscian.h(33): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
-c:\users\root\source\repos\xd\xd\podloze.h(31): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
-c:\users\root\source\repos\xd\xd\camera.h(18): warning C4305: 'initializing': truncation from 'double' to 'float'
-c:\users\root\source\repos\xd\xd\camera.h(23): warning C4305: 'initializing': truncation from 'double' to 'float'
-c:\users\root\source\repos\xd\xd\obj_loader.h(653): warning C4018: '<': signed/unsigned mismatch
-c:\users\root\source\repos\xd\xd\obj_loader.h(690): warning C4018: '<': signed/unsigned mismatch
-c:\users\root\source\repos\xd\xd\obj_loader.h(696): warning C4018: '<': signed/unsigned mismatch
-c:\users\root\source\repos\xd\xd\obj_loader.h(950): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-c:\users\root\source\repos\xd\xd\main.cpp(163): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
-c:\users\root\source\repos\xd\xd\main.cpp(164): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
-c:\users\root\source\repos\xd\xd\main.cpp(396): warning C4244: 'argument': conversion from 'GLdouble' to 'GLfloat', possible loss of data
-c:\users\root\source\repos\xd\xd\main.cpp(397): warning C4244: 'argument': conversion from 'GLdouble' to 'GLfloat', possible loss of data
-c:\users\root\source\repos\xd\xd\main.cpp(398): warning C4244: 'argument': conversion from 'GLdouble' to 'GLfloat', possible loss of data
-c:\users\root\source\repos\xd\xd\main.cpp(404): warning C4244: 'argument': conversion from 'GLdouble' to 'GLfloat', possible loss of data
-c:\users\root\source\repos\xd\xd\main.cpp(418): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-c:\users\root\source\repos\xd\xd\main.cpp(474): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-c:\users\root\source\repos\xd\xd\main.cpp(475): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-c:\users\root\source\repos\xd\xd\main.cpp(477): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-c:\users\root\source\repos\xd\xd\main.cpp(478): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-c:\users\root\source\repos\xd\xd\main.cpp(480): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-c:\users\root\source\repos\xd\xd\main.cpp(481): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-c:\users\root\source\repos\xd\xd\main.cpp(483): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-c:\users\root\source\repos\xd\xd\main.cpp(484): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-c:\users\root\source\repos\xd\xd\main.cpp(486): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-c:\users\root\source\repos\xd\xd\main.cpp(487): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-c:\users\root\source\repos\xd\xd\main.cpp(947): warning C4244: '=': conversion from 'int' to 'GLfloat', possible loss of data
-c:\users\root\source\repos\xd\xd\main.cpp(948): warning C4244: '=': conversion from 'int' to 'GLfloat', possible loss of data
-c:\users\root\source\repos\xd\xd\main.cpp(949): warning C4244: '=': conversion from 'int' to 'GLfloat', possible loss of data
-c:\users\root\source\repos\xd\xd\main.cpp(1015): warning C4101: 'i': unreferenced local variable
-c:\users\root\source\repos\xd\xd\main.cpp(1016): warning C4101: 'glError': unreferenced local variable
-LINK : warning LNK4075: ignoring '/INCREMENTAL' due to '/LTCG' specification
+﻿LINK : warning LNK4075: ignoring '/INCREMENTAL' due to '/LTCG' specification
   Generating code
-  1 of 1066 functions (<0.1%) were compiled, the rest were copied from previous compilation.
+  0 of 1330 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    1 functions had inline decision re-evaluated but remain unchanged
+    0 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   XD.vcxproj -> C:\Users\root\source\repos\XD\Release\XD.exe
+  
+  - find materials in: terrain/landscape.mtl
+  
+  
+  - Plane	| vertices > 0	| texcoords > 0	| normals > 0	| triangles > 0
+  - Plane	| vertices > 1000	| texcoords > 0	| normals > 0	| triangles > 0
+  - Plane	| vertices > 2000	| texcoords > 0	| normals > 0	| triangles > 0
+  - Plane	| vertices > 3000	| texcoords > 0	| normals > 0	| triangles > 0
+  - Plane	| vertices > 4000	| texcoords > 0	| normals > 0	| triangles > 0
+  - Plane	| vertices > 5000	| texcoords > 0	| normals > 0	| triangles > 0
+  - Plane	| vertices > 6000	| texcoords > 0	| normals > 0	| triangles > 0
+  - Plane	| vertices > 7000	| texcoords > 0	| normals > 0	| triangles > 0
+  - Plane	| vertices > 8000	| texcoords > 0	| normals > 0	| triangles > 0
+  - Plane	| vertices > 9000	| texcoords > 0	| normals > 0	| triangles > 0
+  - Plane	| vertices > 10000	| texcoords > 0	| normals > 0	| triangles > 0
+  - Plane	| vertices > 11000	| texcoords > 0	| normals > 0	| triangles > 0
+  - Plane	| vertices > 12000	| texcoords > 0	| normals > 0	| triangles > 0
+  - Plane	| vertices > 13000	| texcoords > 0	| normals > 0	| triangles > 0
+  - Plane	| vertices > 14000	| texcoords > 0	| normals > 0	| triangles > 0
+  - Plane	| vertices > 15000	| texcoords > 0	| normals > 0	| triangles > 0
+  - Plane	| vertices > 16000	| texcoords > 0	| normals > 0	| triangles > 0
+  - Plane	| vertices > 17000	| texcoords > 0	| normals > 0	| triangles > 0
+  - Plane	| vertices > 18000	| texcoords > 0	| normals > 0	| triangles > 0
+  - Plane	| vertices > 19000	| texcoords > 0	| normals > 0	| triangles > 0
+  - Plane	| vertices > 20000	| texcoords > 0	| normals > 0	| triangles > 0
+  - Plane	| vertices > 21000	| texcoords > 0	| normals > 0	| triangles > 0
+  - Plane	| vertices > 22000	| texcoords > 0	| normals > 0	| triangles > 0
+  - Plane	| vertices > 23000	| texcoords > 0	| normals > 0	| triangles > 0
+  - Plane	| vertices > 24000	| texcoords > 0	| normals > 0	| triangles > 0
+  - Plane	| vertices > 25000	| texcoords > 0	| normals > 0	| triangles > 0
+  - Plane	| vertices > 26000	| texcoords > 0	| normals > 0	| triangles > 0
+  - Plane	| vertices > 27000	| texcoords > 0	| normals > 0	| triangles > 0
+  - Plane	| vertices > 28000	| texcoords > 0	| normals > 0	| triangles > 0
+  - Plane	| vertices > 29000	| texcoords > 0	| normals > 0	| triangles > 0
+  - Plane	| vertices > 30000	| texcoords > 0	| normals > 0	| triangles > 0
+  - Plane	| vertices > 31000	| texcoords > 0	| normals > 0	| triangles > 0
+  - Plane	| vertices > 32000	| texcoords > 0	| normals > 0	| triangles > 0
+  - Plane	| vertices > 33000	| texcoords > 0	| normals > 0	| triangles > 0
+  - Plane	| vertices > 34000	| texcoords > 0	| normals > 0	| triangles > 0
+  - Plane	| vertices > 35000	| texcoords > 0	| normals > 0	| triangles > 0
+  - Plane	| vertices > 36000	| texcoords > 0	| normals > 0	| triangles > 0
+  - Plane	| vertices > 37000	| texcoords > 0	| normals > 0	| triangles > 0
+  - Plane	| vertices > 38000	| texcoords > 0	| normals > 0	| triangles > 0
+  - Plane	| vertices > 39000	| texcoords > 0	| normals > 0	| triangles > 0
+  - Plane	| vertices > 40000	| texcoords > 0	| normals > 0	| triangles > 0
+  - Plane	| vertices > 41000	| texcoords > 0	| normals > 0	| triangles > 0
+  - Plane	| vertices > 42000	| texcoords > 0	| normals > 0	| triangles > 0
+  - Plane	| vertices > 43000	| texcoords > 0	| normals > 0	| triangles > 0
+  - Plane	| vertices > 44000	| texcoords > 0	| normals > 0	| triangles > 0
+  - Plane	| vertices > 45000	| texcoords > 0	| normals > 0	| triangles > 0
+  - Plane	| vertices > 46000	| texcoords > 0	| normals > 0	| triangles > 0
+  - Plane	| vertices > 47000	| texcoords > 0	| normals > 0	| triangles > 0
+  - Plane	| vertices > 48000	| texcoords > 0	| normals > 0	| triangles > 0
+  - Plane	| vertices > 49000	| texcoords > 0	| normals > 0	| triangles > 0
+  - Plane	| vertices > 50000	| texcoords > 0	| normals > 0	| triangles > 0
+  - Plane	| vertices > 51000	| texcoords > 0	| normals > 0	| triangles > 0
+  - Plane	| vertices > 52000	| texcoords > 0	| normals > 0	| triangles > 0
+  - Plane	| vertices > 52050	| texcoords > 950	| normals > 0	| triangles > 0
+  - Plane	| vertices > 52050	| texcoords > 1950	| normals > 0	| triangles > 0
+  - Plane	| vertices > 52050	| texcoords > 2950	| normals > 0	| triangles > 0
+  - Plane	| vertices > 52050	| texcoords > 3950	| normals > 0	| triangles > 0
+  - Plane	| vertices > 52050	| texcoords > 4950	| normals > 0	| triangles > 0
+  - Plane	| vertices > 52050	| texcoords > 5950	| normals > 0	| triangles > 0
+  - Plane	| vertices > 52050	| texcoords > 6950	| normals > 0	| triangles > 0
+  - Plane	| vertices > 52050	| texcoords > 7950	| normals > 0	| triangles > 0
+  - Plane	| vertices > 52050	| texcoords > 8950	| normals > 0	| triangles > 0
+  - Plane	| vertices > 52050	| texcoords > 9950	| normals > 0	| triangles > 0
+  - Plane	| vertices > 52050	| texcoords > 10950	| normals > 0	| triangles > 0
+  - Plane	| vertices > 52050	| texcoords > 11950	| normals > 0	| triangles > 0
+  - Plane	| vertices > 52050	| texcoords > 12950	| normals > 0	| triangles > 0
+  - Plane	| vertices > 52050	| texcoords > 13950	| normals > 0	| triangles > 0
+  - Plane	| vertices > 52050	| texcoords > 14950	| normals > 0	| triangles > 0
+  - Plane	| vertices > 52050	| texcoords > 15950	| normals > 0	| triangles > 0
+  - Plane	| vertices > 52050	| texcoords > 16950	| normals > 0	| triangles > 0
+  - Plane	| vertices > 52050	| texcoords > 17950	| normals > 0	| triangles > 0
+  - Plane	| vertices > 52050	| texcoords > 18950	| normals > 0	| triangles > 0
+  - Plane	| vertices > 52050	| texcoords > 19950	| normals > 0	| triangles > 0
+  - Plane	| vertices > 52050	| texcoords > 20950	| normals > 0	| triangles > 0
+  - Plane	| vertices > 52050	| texcoords > 21950	| normals > 0	| triangles > 0
+  - Plane	| vertices > 52050	| texcoords > 22950	| normals > 0	| triangles > 0
+  - Plane	| vertices > 52050	| texcoords > 23950	| normals > 0	| triangles > 0
+  - Plane	| vertices > 52050	| texcoords > 24950	| normals > 0	| triangles > 0
+  - Plane	| vertices > 52050	| texcoords > 25950	| normals > 0	| triangles > 0
+  - Plane	| vertices > 52050	| texcoords > 26950	| normals > 0	| triangles > 0
+  - Plane	| vertices > 52050	| texcoords > 27950	| normals > 0	| triangles > 0
+  - Plane	| vertices > 52050	| texcoords > 28950	| normals > 0	| triangles > 0
+  - Plane	| vertices > 52050	| texcoords > 29950	| normals > 0	| triangles > 0
+  - Plane	| vertices > 52050	| texcoords > 30950	| normals > 0	| triangles > 0
+  - Plane	| vertices > 52050	| texcoords > 31950	| normals > 0	| triangles > 0
+  - Plane	| vertices > 52050	| texcoords > 32950	| normals > 0	| triangles > 0
+  - Plane	| vertices > 52050	| texcoords > 33950	| normals > 0	| triangles > 0
+  - Plane	| vertices > 52050	| texcoords > 34950	| normals > 0	| triangles > 0
+  - Plane	| vertices > 52050	| texcoords > 35950	| normals > 0	| triangles > 0
+  - Plane	| vertices > 52050	| texcoords > 36950	| normals > 0	| triangles > 0
+  - Plane	| vertices > 52050	| texcoords > 37950	| normals > 0	| triangles > 0
+  - Plane	| vertices > 52050	| texcoords > 38950	| normals > 0	| triangles > 0
+  - Plane	| vertices > 52050	| texcoords > 39950	| normals > 0	| triangles > 0
+  - Plane	| vertices > 52050	| texcoords > 40950	| normals > 0	| triangles > 0
+  - Plane	| vertices > 52050	| texcoords > 41950	| normals > 0	| triangles > 0
+  - Plane	| vertices > 52050	| texcoords > 42950	| normals > 0	| triangles > 0
+  - Plane	| vertices > 52050	| texcoords > 43950	| normals > 0	| triangles > 0
+  - Plane	| vertices > 52050	| texcoords > 44950	| normals > 0	| triangles > 0
+  - Plane	| vertices > 52050	| texcoords > 45950	| normals > 0	| triangles > 0
+  - Plane	| vertices > 52050	| texcoords > 46950	| normals > 0	| triangles > 0
+  - Plane	| vertices > 52050	| texcoords > 47950	| normals > 0	| triangles > 0
+  - Plane	| vertices > 52050	| texcoords > 48950	| normals > 0	| triangles > 0
+  - Plane	| vertices > 52050	| texcoords > 49950	| normals > 0	| triangles > 0
+  - Plane	| vertices > 52050	| texcoords > 50950	| normals > 0	| triangles > 0
+  - Plane	| vertices > 52050	| texcoords > 51950	| normals > 0	| triangles > 0
+  - Plane	| vertices > 52050	| texcoords > 52950	| normals > 0	| triangles > 0
+  - Plane	| vertices > 52050	| texcoords > 53950	| normals > 0	| triangles > 0
+  - Plane	| vertices > 52050	| texcoords > 54950	| normals > 0	| triangles > 0
+  - Plane	| vertices > 52050	| texcoords > 55950	| normals > 0	| triangles > 0
+  - Plane	| vertices > 52050	| texcoords > 56950	| normals > 0	| triangles > 0
+  - Plane	| vertices > 52050	| texcoords > 57950	| normals > 0	| triangles > 0
+  - Plane	| vertices > 52050	| texcoords > 58950	| normals > 0	| triangles > 0
+  - Plane	| vertices > 52050	| texcoords > 59950	| normals > 0	| triangles > 0
+  - Plane	| vertices > 52050	| texcoords > 60743	| normals > 207	| triangles > 0
+  - Plane	| vertices > 52050	| texcoords > 60743	| normals > 1207	| triangles > 0
+  - Plane	| vertices > 52050	| texcoords > 60743	| normals > 2207	| triangles > 0
+  - Plane	| vertices > 52050	| texcoords > 60743	| normals > 3207	| triangles > 0
+  - Plane	| vertices > 52050	| texcoords > 60743	| normals > 3436	| triangles > 0	| material: Material.001
+  - Plane	| vertices > 52050	| texcoords > 60743	| normals > 3436	| triangles > 999	| material: Material.001
+  - Plane	| vertices > 52050	| texcoords > 60743	| normals > 3436	| triangles > 0	| material: Material.002
+  - Plane	| vertices > 52050	| texcoords > 60743	| normals > 3436	| triangles > 0	| material: Material.003
+  - Plane	| vertices > 52050	| texcoords > 60743	| normals > 3436	| triangles > 0	| material: Material.004
+  - Plane	| vertices > 52050	| texcoords > 60743	| normals > 3436	| triangles > 0	| material: Material.005
+  - Plane	| vertices > 52050	| texcoords > 60743	| normals > 3436	| triangles > 0	| material: Material.006
+  - Plane	| vertices > 52050	| texcoords > 60743	| normals > 3436	| triangles > 0	| material: Material.012
+  - Plane	| vertices > 52050	| texcoords > 60743	| normals > 3436	| triangles > 0	| material: Material.035
+  - Plane	| vertices > 52050	| texcoords > 60743	| normals > 3436	| triangles > 0	| material: Material.039
+  - Plane	| vertices > 52050	| texcoords > 60743	| normals > 3436	| triangles > 0	| material: Material.043
+  - Plane	| vertices > 52050	| texcoords > 60743	| normals > 3436	| triangles > 0	| material: Material.041
+  
+  - find materials in: trunk/trunk.mtl
+  
+  
+  - Cube.003	| vertices > 0	| texcoords > 0	| normals > 0	| triangles > 0
+  - Cube.003	| vertices > 40	| texcoords > 0	| normals > 6	| triangles > 0	| material: Material.001
+  
+  - find materials in: trunk/trunk.mtl
+  
+  
+  - Cube.003	| vertices > 0	| texcoords > 0	| normals > 0	| triangles > 0
+  - Cube.003	| vertices > 40	| texcoords > 0	| normals > 6	| triangles > 0	| material: Material.001
+  
+  - find materials in: trunk/trunk.mtl
+  
+  
+  - Cube.003	| vertices > 0	| texcoords > 0	| normals > 0	| triangles > 0
+  - Cube.003	| vertices > 40	| texcoords > 0	| normals > 6	| triangles > 0	| material: Material.001
+  
+  - find materials in: leafs/leafs.mtl
+  
+  
+  - Cube.003	| vertices > 0	| texcoords > 0	| normals > 0	| triangles > 0
+  - Cube.003	| vertices > 32	| texcoords > 0	| normals > 6	| triangles > 0	| material: Material.001
+  - Cube.003	| vertices > 32	| texcoords > 0	| normals > 6	| triangles > 0	| material: Material.002
+  
+  - find materials in: leafs/leafs.mtl
+  
+  
+  - Cube.003	| vertices > 0	| texcoords > 0	| normals > 0	| triangles > 0
+  - Cube.003	| vertices > 32	| texcoords > 0	| normals > 6	| triangles > 0	| material: Material.001
+  - Cube.003	| vertices > 32	| texcoords > 0	| normals > 6	| triangles > 0	| material: Material.002
+  
+  - find materials in: leafs/leafs.mtl
+  
+  
+  - Cube.003	| vertices > 0	| texcoords > 0	| normals > 0	| triangles > 0
+  - Cube.003	| vertices > 32	| texcoords > 0	| normals > 6	| triangles > 0	| material: Material.001
+  - Cube.003	| vertices > 32	| texcoords > 0	| normals > 6	| triangles > 0	| material: Material.002
